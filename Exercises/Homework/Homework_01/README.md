@@ -173,7 +173,7 @@ int main()
 
 ## Exercise 6
 
-> Do a program that calculates the area of the following structure. (No image provided, but basically it is a 3/4 of a circle, square and triangle combined) when the radius of the circle, the width of the square, and the length of the triangle are 2cm, respectively.
+> Do a program that calculates the area of the following structure. (No image provided, but basically it is a 3/4 of a circle, square and triangle combined) when the radius of the circle, the width of the square, and the length of the triangle is 2cm, respectively.
 
 ```cpp
 #include <iostream>
