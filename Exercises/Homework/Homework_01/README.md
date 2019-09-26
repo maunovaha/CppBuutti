@@ -147,6 +147,28 @@ int main()
 > Do a program that calculates the area of a circle. The mathematical formula for area of a circle is **_A = π r²_**. You can access PI with variable *M_PI* after including *<math.h>*.
 
 ```cpp
+#include <iostream>
+#include <cmath>
+
+int main()
+{
+    std::cout << "What is the radius of your circle?" << std::endl;
+
+    double circle_radius = 0.0;
+
+    if (std::cin >> circle_radius) {
+        double circle_area = M_PI * circle_radius * circle_radius;
+
+        std::cout << "A circle with radius of " << circle_radius << "m is " << circle_area
+            << " square meters in area." << std::endl;
+    }
+    else {
+        std::cout << "Invalid data? Try again." << std::endl;
+        return -1;
+    }
+
+    return 0;
+}
 ```
 
 ## Exercise 6
