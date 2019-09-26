@@ -58,3 +58,27 @@ Variable valid value is: false
 Variable distance value is: 22.12
 Variable length value is: 22.12
 ```
+
+## Exercise 2
+
+> Write a program which asks age from the user and prints it to a console.
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    std::cout << "How old are you?" << std::endl;
+
+    int age = 0; // Initialized to avoid garbage value
+
+    if (std::cin >> age) {
+        std::cout << "You are " << age << " years old." << std::endl;
+    } else {
+        std::cout << "Invalid data? Try again." << std::endl;
+        return -1; // Marks error in the execution of the program
+    }
+
+    return 0;
+}
+```
