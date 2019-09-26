@@ -4,7 +4,8 @@
 
 ## Exercise 1
 
-> Create two functions; The first one takes in two *int* parameters, multiplies them, and returns the result. The second one takes in one parameter, outputs its value to the console, and returns nothing.
+> Create two functions; The first one takes in two *int* parameters, multiplies them, and returns the result. The second one takes in one parameter, prints its value to a console, and returns nothing.
+> 
 > Note: Use the first function to get a value which you then pass into the second function.
 
 ```cpp
@@ -40,9 +41,36 @@ The value is: 300
 
 ## Exercise 2
 
-> ...
+> Create a program that takes in three numbers *a*, *b* and *c* (decide the value for these freely). Then find the largest number among these three using *if* conditionals. Finally, print the result to a console.
 
 ```cpp
+#include <iostream>
+
+int main()
+{
+    int a = 0;
+    int b = 0;
+    int c = 0;
+
+    std::cout << "Give values for a, b and c separated by spaces: " << std::endl;
+    std::cin >> a >> b >> c;
+
+    // Note: The program assumes that the user provides values which are not the same. However,
+    // we use `>=` here to handle equal cases as well.
+
+    if (a >= b && a >= c) {
+        std::cout << "a is the largest number!" << std::endl;
+    }
+    else if (b >= a && b >= c) {
+        std::cout << "b is the largest number!" << std::endl;
+    }
+    else {
+        std::cout << "c is the largest number!" << std::endl;
+    }
+
+    return 0;
+}
+
 ```
 
 ## Exercise 3
