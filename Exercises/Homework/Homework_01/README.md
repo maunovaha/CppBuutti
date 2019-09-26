@@ -24,7 +24,7 @@ int main()
         // Normally we would have more validations here, but in order to keep things simple
         // we assume that the user just provides a proper birth year.
 
-        int age = current_year - birth_year;
+        const int age = current_year - birth_year;
         
         std::cout << "You will be " << age << " years old this year!" << std::endl;
     }
@@ -56,7 +56,7 @@ int main()
     double square_width = 0.0;
 
     if (std::cin >> square_width) {
-        double square_area = square_width * square_width;
+        const double square_area = square_width * square_width;
 
         std::cout << "A square with sides of " << square_width << "m is " << square_area
             << " square meters in area." << std::endl;
@@ -89,7 +89,7 @@ int main()
     double triangle_width = 0.0;
 
     if (std::cin >> triangle_width) {
-        double triangle_area = triangle_width * triangle_width / 2.0;
+        const double triangle_area = triangle_width * triangle_width / 2.0;
 
         std::cout << "A triangle with sides of " << triangle_width << "m is " << triangle_area
             << " square meters in area." << std::endl;
@@ -124,7 +124,7 @@ int main()
     int number = 0;
 
     if (std::cin >> number) {
-        bool even = number % 2 == 0;
+        const bool even = number % 2 == 0;
 
         if (even) {
             std::cout << "Your number is even!" << std::endl;
@@ -157,7 +157,7 @@ int main()
     double circle_radius = 0.0;
 
     if (std::cin >> circle_radius) {
-        double circle_area = M_PI * circle_radius * circle_radius;
+        const double circle_area = M_PI * circle_radius * circle_radius;
 
         std::cout << "A circle with radius of " << circle_radius << "m is " << circle_area
             << " square meters in area." << std::endl;
@@ -173,7 +173,24 @@ int main()
 
 ## Exercise 6
 
-> Do a program that calculates the area of the following structure. (No image provided, but basically it is a 3/4 of a circle, square and triangle combined).
+> Do a program that calculates the area of the following structure. (No image provided, but basically it is a 3/4 of a circle, square and triangle combined) when the radius of the circle, the width of the square, and the length of the triangle are 2cm, respectively.
 
 ```cpp
+#include <iostream>
+#include <cmath>
+
+int main()
+{
+    const double circle_radius = 2.0;
+    const double square_area = circle_radius * circle_radius;
+    const double triangle_area = circle_radius * circle_radius / 2.0;
+    const double circle_area = M_PI * circle_radius * circle_radius;
+    const double three_quarters_of_circle_area = circle_area * 0.75;
+    const double structure_area = square_area + triangle_area + three_quarters_of_circle_area;
+
+    std::cout << "The total area of the structure is " << structure_area 
+        << " square centrimeters in area." << std::endl;
+
+    return 0;
+}
 ```
