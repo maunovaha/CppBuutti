@@ -4,11 +4,10 @@
 
 > Make an application that asks for your birth year and prints out how many years old you will be at the end of the year.
 > 
-> Example output =>
-> What is your birth year?
-> 1989
-> You will be 30 years old this year!
-
+> Example output =>  
+> *What is your birth year?*  
+> *1989*  
+> *You will be 30 years old this year!*
 
 ```cpp
 #include <iostream>
