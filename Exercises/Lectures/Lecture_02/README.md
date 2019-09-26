@@ -75,7 +75,44 @@ int main()
 
 ## Exercise 3
 
-> ...
+> Create a program where you define the following: *str1*, *str2* and the combined string *str1 + str2*.
+> 
+> Check the length of these strings using *size()*, e.g. *str1.size()* or *str2.size()*.
+> 
+> Then create three if statements where you check the string length of *str1*, *str2* and the combined string, and *only* print the strings if their length is smaller than *8*.
 
 ```cpp
+#include <iostream>
+#include <string>
+
+int main()
+{
+    const int max_str_size = 8;
+
+    std::cout << "Give value of str1: " << std::endl;
+    std::string str1;
+    std::cin >> str1;
+
+    std::cout << "Give value of str2: " << std::endl;
+    std::string str2;
+    std::cin >> str2;
+
+    std::string str3 = str1 + str2;
+
+    if (str1.size() < max_str_size) {
+        std::cout << "The size of str1 is: " << str1.size() << std::endl;
+    }
+
+    if (str2.size() < max_str_size) {
+        std::cout << "The size of str2 is: " << str2.size() << std::endl;
+    }
+
+    if (str3.size() < max_str_size) {
+        std::cout << "The size of str3 is: " << str3.size() << std::endl;
+    }
+
+    return 0;
+}
+
+
 ```
