@@ -76,7 +76,7 @@ int main()
         std::cout << "You are " << age << " years old." << std::endl;
     } 
     else {
-        std::cout << "Invalid data? Try again." << std::endl;
+        std::cout << "Invalid data! Try again." << std::endl;
         return -1; // Marks error in the execution of the program
     }
 

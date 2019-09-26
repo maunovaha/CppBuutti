@@ -29,7 +29,7 @@ int main()
         std::cout << "You will be " << age << " years old this year!" << std::endl;
     }
     else {
-        std::cout << "Invalid data? Try again." << std::endl;
+        std::cout << "Invalid data! Try again." << std::endl;
         return -1;
     }
 
@@ -62,7 +62,7 @@ int main()
             << " square meters in area." << std::endl;
     }
     else {
-        std::cout << "Invalid data? Try again." << std::endl;
+        std::cout << "Invalid data! Try again." << std::endl;
         return -1;
     }
 
@@ -95,7 +95,7 @@ int main()
             << " square meters in area." << std::endl;
     }
     else {
-        std::cout << "Invalid data? Try again." << std::endl;
+        std::cout << "Invalid data! Try again." << std::endl;
         return -1;
     }
 
@@ -134,7 +134,7 @@ int main()
         }
     }
     else {
-        std::cout << "Invalid data? Try again." << std::endl;
+        std::cout << "Invalid data! Try again." << std::endl;
         return -1;
     }
 
@@ -163,7 +163,7 @@ int main()
             << " square meters in area." << std::endl;
     }
     else {
-        std::cout << "Invalid data? Try again." << std::endl;
+        std::cout << "Invalid data! Try again." << std::endl;
         return -1;
     }
 

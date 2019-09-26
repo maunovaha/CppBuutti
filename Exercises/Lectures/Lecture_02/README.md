@@ -53,7 +53,11 @@ int main()
     int c = 0;
 
     std::cout << "Give values for a, b and c separated by spaces: " << std::endl;
-    std::cin >> a >> b >> c;
+    
+    if (!(std::cin >> a >> b >> c)) {
+        std::cout << "Invalid data! Try again." << std::endl;
+        return -1;
+    }
 
     // Note: The program assumes that the user provides values which are not the same. However,
     // we use `>=` here to handle equal cases as well.
@@ -70,7 +74,6 @@ int main()
 
     return 0;
 }
-
 ```
 
 ## Exercise 3
@@ -97,7 +100,7 @@ int main()
     std::string str2;
     std::cin >> str2;
 
-    std::string str3 = str1 + str2;
+    const std::string str3 = str1 + str2;
 
     if (str1.size() < max_str_size) {
         std::cout << "The size of str1 is: " << str1.size() << std::endl;
