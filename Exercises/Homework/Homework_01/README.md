@@ -80,9 +80,30 @@ int main()
 > *A triangle with sides of length 5m is 12.5 square meters in area.*
 
 ```cpp
+#include <iostream>
+
+int main()
+{
+    std::cout << "How long are the sides of your triangle in meters?" << std::endl;
+
+    double triangle_width = 0.0;
+
+    if (std::cin >> triangle_width) {
+        double triangle_area = triangle_width * triangle_width / 2.0;
+
+        std::cout << "A triangle with sides of " << triangle_width << "m is " << triangle_area
+            << " square meters in area." << std::endl;
+    }
+    else {
+        std::cout << "Invalid data? Try again." << std::endl;
+        return -1;
+    }
+
+    return 0;
+}
 ```
 
-... Here explanation for "What data type do we need for decimal numbers? What happens if we use an integer?" ...
+We prefer using `double` for storing decimal numbers due to fact that it has 2x precision of *float*, and the cost of double-precision calculations versus single-precision is negligible. Hence, using integer here would be possible, but unpractical, because we lack the needed precision even for simple calculations, e.g. doing *int triangle_area = 5 * 5 / 2.0* would result to value of *12* rather than *12.5*.
 
 ## Exercise 4
 
