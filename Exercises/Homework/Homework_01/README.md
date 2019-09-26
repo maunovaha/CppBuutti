@@ -36,3 +36,76 @@ int main()
     return 0;
 }
 ```
+
+## Exercise 2
+
+> Do a program that calculates the area of a square by your input. The mathematical formula for square area is **_A = s * s_**.
+> 
+> Example output =>  
+> *How wide is your square in meters?*  
+> *5*  
+> *A square with sides of length 5m is 25 square meters in area.*
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    std::cout << "How wide is your square in meters?" << std::endl;
+
+    double square_width = 0.0;
+
+    if (std::cin >> square_width) {
+        double square_area = square_width * square_width;
+
+        std::cout << "A square with sides of " << square_width << "m is " << square_area
+            << " square meters in area." << std::endl;
+    }
+    else {
+        std::cout << "Invalid data? Try again." << std::endl;
+        return -1;
+    }
+
+    return 0;
+}
+```
+
+## Exercise 3
+
+> Do a program that calculates the area of a triangle by your input. The mathematical formula for a triangle area is **_A = s * s / 2_**. What data type do we need for decimal numbers? What happens if we use an integer?
+> 
+> Example output =>  
+> *How long are the sides of your triangle in meters?*  
+> *5*  
+> *A triangle with sides of length 5m is 12.5 square meters in area.*
+
+```cpp
+```
+
+... Here explanation for "What data type do we need for decimal numbers? What happens if we use an integer?" ...
+
+## Exercise 4
+
+> Do a program that tells you if a number is even or odd. Use the modulo operator %.
+> 
+> Example output =>  
+> *What is your number?*  
+> *5*  
+> *Your number is odd!*
+
+```cpp
+```
+
+## Exercise 5
+
+> Do a program that calculates the area of a circle. The mathematical formula for area of a circle is **_A = π r²_**. You can access PI with variable *M_PI* after including *<math.h>*.
+
+```cpp
+```
+
+## Exercise 6
+
+> Do a program that calculates the area of the following structure. (No image provided, but basically it is a 3/4 of a circle, square and triangle combined).
+
+```cpp
+```
