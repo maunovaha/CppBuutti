@@ -115,6 +115,31 @@ We prefer using `double` for storing decimal numbers due to fact that it has 2x 
 > *Your number is odd!*
 
 ```cpp
+#include <iostream>
+
+int main()
+{
+    std::cout << "What is your number?" << std::endl;
+
+    int number = 0;
+
+    if (std::cin >> number) {
+        bool even = number % 2 == 0;
+
+        if (even) {
+            std::cout << "Your number is even!" << std::endl;
+        }
+        else {
+            std::cout << "Your number is odd!" << std::endl;
+        }
+    }
+    else {
+        std::cout << "Invalid data? Try again." << std::endl;
+        return -1;
+    }
+
+    return 0;
+}
 ```
 
 ## Exercise 5
