@@ -123,7 +123,33 @@ int main()
 **Output**
 
 ```
+is_hearts(4)  = true
+is_hearts(6)  = false
+is_hearts(0)  = false
+is_hearts(-1) = false
 
+is_mark_happy(false, true)  = true
+is_mark_happy(true,  false) = false
+is_mark_happy(true,  true)  = false
+is_mark_happy(false, false) = false
+
+is_beach_day(true,  false, 20) = true
+is_beach_day(true,  false, 25) = true
+is_beach_day(true,  false, 19) = false
+is_beach_day(false, false, 20) = false
+is_beach_day(true,  true,  20) = false
+is_beach_day(false, true,  20) = false
+
+is_johnny_happy("Tuesday",   false, true)  = true
+is_johnny_happy("Tuesday",   true,  false) = true
+is_johnny_happy("Tuesday",   true,  true)  = false
+is_johnny_happy("Tuesday",   false, false) = false
+is_johnny_happy("Monday",    false, true)  = false
+is_johnny_happy("Wednesday", false, true)  = false
+is_johnny_happy("Thursday",  false, true)  = false
+is_johnny_happy("Friday",    false, true)  = false
+is_johnny_happy("Saturday",  false, true)  = false
+is_johnny_happy("Sunday",    false, true)  = false
 ```
 
 ## Exercise 3
@@ -132,14 +158,87 @@ int main()
 > 
 > The pricing table currently looks like this:
 > 
-> | Tables        | Are           | Cool  |  
-> | ------------- |:-------------:| -----:|  
-> | col 3 is      | right-aligned | $1600 |  
-> | col 2 is      | centered      |   $12 |  
-> | zebra stripes | are neat      |    $1 |
+> | Group         | Price         |  
+> | ------------- |:-------------:|  
+> | Adults        | 3.80€         |  
+> | Children 0-16 | 2.40€         |  
+> | Seniors 65+   | 2.40€         |  
+> | Students      | 2.40€         |
+> 
+> Example output =>  
+> *What is your birth year?*  
+> *1994*  
+> *Are you a student? (y/n)*  
+> *y*  
+> *Your price of admission is 2.40€*
+> 
+> *What is your birth year?*  
+> *1996*  
+> *Are you a student? (y/n)*  
+> *n*  
+> *Your price of admission is 3.80€*
 
 ```cpp
-...
+#include <iostream>
+
+int birth_year_to_age(const int birth_year, const int current_year = 2019)
+{
+    return current_year - birth_year;
+}
+
+bool is_child(const int age)
+{
+    return age > 0 && age <= 16;
+}
+
+bool is_senior(const int age)
+{
+    return age >= 65;
+}
+
+bool is_adult(const int age)
+{
+    return !(is_child(age) || is_senior(age));
+}
+
+int main()
+{
+    const double adults_price = 3.8;
+    const double discounted_price = 2.4;
+
+    double current_price = discounted_price;
+
+    std::cout << "What is your birth year?" << std::endl;
+    
+    int birth_year = 0;
+
+    if (!(std::cin >> birth_year)) {
+        std::cout << "Invalid birth year! Try again." << std::endl;
+        return -1;
+    }
+
+    const int age = birth_year_to_age(birth_year);
+
+    if (is_adult(age)) {
+        std::cout << "Are you a student? (y/n)" << std::endl;
+
+        char student = '\0';
+
+        if (!(std::cin >> student) || !(student == 'y' || student == 'n')) {
+            std::cout << "Invalid answer! Try again." << std::endl;
+            return -1;
+        }
+
+        if (student == 'n') {
+            current_price = adults_price;
+        }
+    }
+
+    std::cout << "Your price of admission is " << current_price << "€" << std::endl;
+
+    return 0;
+}
+
 ```
 
 ## Exercise 4
