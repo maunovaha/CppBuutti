@@ -9,7 +9,7 @@
 > *8*  
 > *How many seconds did it take?*  
 > *2*  
-> *Your speed is 14.4000 km/h*
+> *The object speed is 14.4000 km/h.*
 
 ```cpp
 #include <iostream>
@@ -57,11 +57,73 @@ int main()
 > 
 > **_a)_** The game hearts can only be played with four people ```(int player_count)```.  
 > **_b)_** Mark is happy whe he is not stressed or if he has ice cream ```(bool stressed, bool has_ice_cream)```.  
-> **_c)_** It is beach day if the sun is shining, it is not raining and the temperatur is 20 degress celcius or above.
+> **_c)_** It is beach day if the sun is shining, it is not raining and the temperature is 20 degress celcius or above.  
 > **_d)_** Johnny is happy if he has a date either with Cindy or with Mindy on Tuesday night. However, having a date with two girls at the same time causes obvious trouble. Also, staying alone makes Johnny sad.
 
 ```cpp
-...
+#include <iostream>
+#include <string>
+
+bool is_hearts(const int player_count)
+{
+    return player_count == 4;
+}
+
+bool is_mark_happy(const bool stressed, const bool has_ice_cream)
+{
+    return !stressed && has_ice_cream;
+}
+
+bool is_beach_day(const bool sunny, const bool raining, const double temperature)
+{
+    return sunny && !raining && temperature >= 20;
+}
+
+bool is_johnny_happy(const std::string& day, const bool date_with_mindy, const bool date_with_cindy)
+{
+    return day == "Tuesday" && ((date_with_mindy || date_with_cindy) && !(date_with_mindy && date_with_cindy));
+}
+
+int main()
+{   
+    std::cout << std::boolalpha; // Allows to output textual value of bool
+
+    std::cout << "\nis_hearts(4)  = " << is_hearts(4)
+              << "\nis_hearts(6)  = " << is_hearts(6)
+              << "\nis_hearts(0)  = " << is_hearts(0)
+              << "\nis_hearts(-1) = " << is_hearts(-1) << "\n";
+
+    std::cout << "\nis_mark_happy(false, true)  = " << is_mark_happy(false, true)
+              << "\nis_mark_happy(true,  false) = " << is_mark_happy(true, false)
+              << "\nis_mark_happy(true,  true)  = " << is_mark_happy(true, true)
+              << "\nis_mark_happy(false, false) = " << is_mark_happy(false, false) << "\n";
+
+    std::cout << "\nis_beach_day(true,  false, 20) = " << is_beach_day(true, false, 20)
+              << "\nis_beach_day(true,  false, 25) = " << is_beach_day(true, false, 25)
+              << "\nis_beach_day(true,  false, 19) = " << is_beach_day(true, false, 19)
+              << "\nis_beach_day(false, false, 20) = " << is_beach_day(false, false, 20)
+              << "\nis_beach_day(true,  true,  20) = " << is_beach_day(true, true, 20)
+              << "\nis_beach_day(false, true,  20) = " << is_beach_day(false, true, 20) << "\n";
+
+    std::cout << "\nis_johnny_happy(\"Tuesday\",   false, true)  = " << is_johnny_happy("Tuesday", false, true)
+              << "\nis_johnny_happy(\"Tuesday\",   true,  false) = " << is_johnny_happy("Tuesday",true, false)
+              << "\nis_johnny_happy(\"Tuesday\",   true,  true)  = " << is_johnny_happy("Tuesday",true, true)
+              << "\nis_johnny_happy(\"Tuesday\",   false, false) = " << is_johnny_happy("Tuesday",false, false)
+              << "\nis_johnny_happy(\"Monday\",    false, true)  = " << is_johnny_happy("Monday", false, true)
+              << "\nis_johnny_happy(\"Wednesday\", false, true)  = " << is_johnny_happy("Wednesday", false, true)
+              << "\nis_johnny_happy(\"Thursday\",  false, true)  = " << is_johnny_happy("Thursday", false, true)
+              << "\nis_johnny_happy(\"Friday\",    false, true)  = " << is_johnny_happy("Friday", false, true)
+              << "\nis_johnny_happy(\"Saturday\",  false, true)  = " << is_johnny_happy("Saturday", false, true)
+              << "\nis_johnny_happy(\"Sunday\",    false, true)  = " << is_johnny_happy("Sunday", false, true) << std::endl;
+
+    return 0;
+}
+```
+
+**Output**
+
+```
+
 ```
 
 ## Exercise 3
@@ -91,7 +153,7 @@ int main()
 > *7*  
 > *What is your second number?*  
 > *4*  
-> *What operand you want to use? (+, -, *, /)*  
+> _What operand you want to use? (+, -, *, /)_  
 > *+*  
 > *The answer is 11.*
 
