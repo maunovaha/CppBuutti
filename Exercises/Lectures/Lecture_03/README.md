@@ -4,9 +4,9 @@
 
 ## Exercise 1
 
-> Create a program that takes in a number `n` and prints out a trinalge of &'s with the height of `n`.
+> Create a program that takes in a number *n* and prints out a trinalge of &'s with the height of *n*.
 > 
-> For example, if `n` is 4, program prints:  
+> For example, if *n* is 4, program prints:  
 > &  
 > &&  
 > &&&  
@@ -42,3 +42,35 @@ int main()
     return 0;
 }
 ```
+
+## Exercise 2a
+
+> Find out how many numbers you have to add together for the result to be over *1000*. e.g. *(1 + 2 + 3 + 4 + 5 = 15)*.
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    const int limit = 1000;
+    
+    int increment = 0;
+    int current = 0;
+
+    for (;;) {
+    	++increment;
+        current += increment;
+
+        std::cout << "The value of current is: " << current << std::endl;
+
+        if (current >= limit) {
+            std::cout << "\nWe looped " << increment << " times!" << std::endl;
+            break;
+        }
+    }
+
+    return 0;
+}
+```
+
+The answer is 45 numbers.

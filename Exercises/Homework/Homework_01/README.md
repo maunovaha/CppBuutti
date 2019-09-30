@@ -103,7 +103,7 @@ int main()
 }
 ```
 
-We prefer using `double` for storing decimal numbers due to fact that it has 2x precision of *float*, and the cost of double-precision calculations versus single-precision is negligible. Hence, using integer here would be possible, but unpractical, because we lack the needed precision even for simple calculations, e.g. doing *int triangle_area = 5 * 5 / 2.0* would result to value of *12* rather than *12.5*.
+We prefer using *double* for storing decimal numbers due to fact that it has 2x precision of *float*, and the cost of double-precision calculations versus single-precision is negligible. Hence, using integer here would be possible, but unpractical, because we lack the needed precision even for simple calculations, e.g. doing *int triangle_area = 5 * 5 / 2.0* would result to value of *12* rather than *12.5*.
 
 ## Exercise 4
 
