@@ -177,10 +177,10 @@ The factorial(9) is: 362880
 
 ## Exercise 4
 
-> **_Collatz conjecture:_**
+> **_Collatz conjecture:_**  
 > Define a number *n* that is larger than *0*, e.g. *n = 3*.  
 > Then find the number of steps it takes to reach number *1* using the following process:  
-> If *n* is even, divide it by *2*.
+> If *n* is even, divide it by *2*.  
 > If *n* is odd, multiply it by *3* and add *1*.
 >
 > Example output =>  
