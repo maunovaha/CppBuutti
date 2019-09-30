@@ -174,3 +174,69 @@ The factorial(7) is: 5040
 The factorial(8) is: 40320
 The factorial(9) is: 362880
 ```
+
+## Exercise 4
+
+> **_Collatz conjecture:_**
+> Define a number *n* that is larger than *0*, e.g. *n = 3*.  
+> Then find the number of steps it takes to reach number *1* using the following process:  
+> If *n* is even, divide it by *2*.
+> If *n* is odd, multiply it by *3* and add *1*.
+>
+> Example output =>  
+> *Please give a whole number:*  
+> *3*  
+> *3 is odd.*  
+> *10 is even.*  
+> *5 is odd.*  
+> *16 is even.*  
+> *8 is even.*  
+> *4 is even.*  
+> *2 is even.*
+> 
+> *The program executed 7 step(s) to reach number 1*.
+
+```cpp
+#include <iostream>
+
+bool is_odd(const int value)
+{
+    return value % 2 != 0;
+}
+
+int collatz_conjecture(const int value, int steps = 0)
+{
+    if (value <= 1) {
+        return steps;
+    }
+
+    ++steps;
+
+    if (is_odd(value)) {
+        std::cout << value << " is odd." << std::endl;
+        return collatz_conjecture(value * 3 + 1, steps);
+    } 
+    else {
+        std::cout << value << " is even." << std::endl;
+        return collatz_conjecture(value / 2, steps);
+    }
+}
+
+int main()
+{
+    std::cout << "Please give a whole number: " << std::endl;
+
+    int number = 0;
+
+    if (std::cin >> number) {
+        const int steps = collatz_conjecture(number);
+        std::cout << "The program executed " << steps << " step(s) to reach number 1." << std::endl;
+    }
+    else {
+        std::cout << "Invalid data! Try again." << std::endl;
+        return -1;
+    }
+
+    return 0;
+}
+```
