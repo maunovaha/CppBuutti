@@ -74,3 +74,45 @@ int main()
 ```
 
 The answer is 45 numbers.
+
+## Exercise 2b
+
+> Adding to the previous experiment. Find out how many numbers you have to add together for the result to be over *1000*, but skip all numbers - using *continue* statement - that are multiples of *3*. e.g. *(3, 6, 9, 12, 15, 18...)*.
+
+```cpp
+#include <iostream>
+
+bool is_multiple_of_three(const int value) 
+{
+    return value % 3 == 0;
+}
+
+int main()
+{
+    const int limit = 1000;
+
+    int increment = 0;
+    int current = 0;
+
+    for (;;) {
+        ++increment;
+
+        if (is_multiple_of_three(increment)) {
+            continue;
+        }
+ 
+        current += increment;
+
+        std::cout << "The value of current is: " << current << std::endl;
+
+        if (current >= limit) {
+            std::cout << "\nWe looped " << increment << " times!" << std::endl;
+            break;
+        }
+    } 
+
+    return 0;
+}
+```
+
+The answer is 55 numbers.
