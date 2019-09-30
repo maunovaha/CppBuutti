@@ -254,10 +254,84 @@ int main()
 > *4*  
 > _What operand you want to use? (+, -, *, /)_  
 > *+*  
-> *The answer is 11.*
+> *The result of 7 + 4 is 11.*
 
 ```cpp
-...
+#include <iostream>
+#include <string>
+
+double calculate_sum(const double a, const double b)
+{
+    return a + b;
+}
+
+double calculate_subtraction(const double a, const double b)
+{
+    return a - b;
+}
+
+double calculate_multiplication(const double a, const double b)
+{
+    return a * b;
+}
+
+double calculate_division(const double a, const double b)
+{
+    return a / b;
+}
+
+double calculate_result(const double a, const double b, const char operand)
+{
+    switch(operand) {
+        case '+':
+            return calculate_sum(a, b);
+        case '-':
+            return calculate_subtraction(a, b);
+        case '*':
+            return calculate_multiplication(a, b);
+        case '/':
+            return calculate_division(a, b);
+    }
+
+    throw std::invalid_argument("Operand you provided is not known!");
+}
+
+bool is_valid_operand(const char operand, const std::string& allowed_operands = "+-*/")
+{
+    return allowed_operands.find(operand) != std::string::npos;
+}
+
+int main()
+{
+    std::cout << "What is your first number?" << std::endl;
+    double first = 0;
+
+    if (!(std::cin >> first)) {
+        std::cout << "Invalid data! Try again." << std::endl;
+        return -1;
+    }
+
+    std::cout << "What is your second number?" << std::endl;
+    double second = 0;
+
+    if (!(std::cin >> second)) {
+        std::cout << "Invalid data! Try again." << std::endl;
+        return -1;
+    }
+
+    std::cout << "What operand you want to use? (+, -, *, /)" << std::endl;
+    char operand = '\0';
+
+    if (!(std::cin >> operand && is_valid_operand(operand))) {
+        std::cout << "Invalid operand! Try again." << std::endl;
+        return -1;
+    }
+
+    std::cout << "The result of " << first << " " << operand << " " << second
+        << " is " << calculate_result(first, second, operand) << "." << std::endl;
+
+    return 0;
+}
 ```
 
 ## Exercise 5
@@ -277,7 +351,7 @@ int main()
 >
 > **Phase 2:** Make it repeat until you find the right answer. *(Tip: You can make a function repeat by calling it in the end of it.)*
 >
-> **Phase 3:** Use a random number generator to generate the secret number from *0* to *100*. Read the (following theory)[http://www.fredosaurus.com/notes-cpp/misc/random.html] on random number generation. *(Tip: Don't make the random number generation repeat!)*
+> **Phase 3:** Use a random number generator to generate the secret number from *0* to *100*. Read the [following theory](http://www.fredosaurus.com/notes-cpp/misc/random.html) on random number generation. *(Tip: Don't make the random number generation repeat!)*
 
 ```cpp
 ...
