@@ -23,7 +23,6 @@ double calculate_speed(const double distance, const double duration)
 int main()
 {
     std::cout << "What is the distance that the object moved in meters?" << std::endl;
-
     double distance = 0.0;
 
     if (!(std::cin >> distance)) {
@@ -32,7 +31,6 @@ int main()
     }
 
     std::cout << "How many seconds did it take?" << std::endl;
-
     double duration = 0.0;
 
     if (!(std::cin >> duration)) {
@@ -209,7 +207,6 @@ int main()
     double current_price = discounted_price;
 
     std::cout << "What is your birth year?" << std::endl;
-    
     int birth_year = 0;
 
     if (!(std::cin >> birth_year)) {
@@ -221,7 +218,6 @@ int main()
 
     if (is_adult(age)) {
         std::cout << "Are you a student? (y/n)" << std::endl;
-
         char student = '\0';
 
         if (!(std::cin >> student) || !(student == 'y' || student == 'n')) {
@@ -340,12 +336,12 @@ int main()
 > 
 > **Phase 1:** Make it say if the number is smaller, larger or correct.
 > 
-> Example output =>
-> *Guess a number?*  
+> Example output =>  
+> *Guess a secret number:*  
 > *15*  
 > *The secret number is larger!*
 >
-> *Guess a number?*  
+> *Guess a secret number:*  
 > *42*  
 > *You found the secret number!*
 >
@@ -354,5 +350,43 @@ int main()
 > **Phase 3:** Use a random number generator to generate the secret number from *0* to *100*. Read the [following theory](http://www.fredosaurus.com/notes-cpp/misc/random.html) on random number generation. *(Tip: Don't make the random number generation repeat!)*
 
 ```cpp
-...
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+int generate_random_number(const int min, const int max)
+{
+    return min + rand() % (( max + 1 ) - min);
+}
+
+int main()
+{
+    // Seeding random number generation with the clock in order to ensure that we will 
+    // not get same sequence of random numbers when the program is run multiple times.
+    srand(time(0));
+
+    const int secret_number = generate_random_number(0, 100);
+    int guessed_number = -1;
+
+    do {
+        std::cout << "Guess a secret number: " << std::endl;
+
+        if (!(std::cin >> guessed_number)) {
+            std::cout << "Invalid data! Try again." << std::endl;
+            return -1;
+        }
+
+        if (guessed_number < secret_number) {
+            std::cout << "The secret number is larger!\n" << std::endl;
+        }
+        else if (guessed_number > secret_number) {
+            std::cout << "The secret number is smaller!\n" << std::endl;
+        }
+    }
+    while (guessed_number != secret_number);
+
+    std::cout << "You found the secret number!" << std::endl;
+
+    return 0;
+}
 ```

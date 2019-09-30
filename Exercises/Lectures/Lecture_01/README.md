@@ -69,7 +69,6 @@ Variable length value is: 22.12
 int main()
 {
     std::cout << "How old are you?" << std::endl;
-
     int age = 0; // Initialized to avoid garbage value
 
     if (std::cin >> age) {

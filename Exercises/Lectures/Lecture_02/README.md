@@ -48,11 +48,10 @@ The value is: 300
 
 int main()
 {
+    std::cout << "Give values for a, b and c separated by spaces: " << std::endl;
     int a = 0;
     int b = 0;
     int c = 0;
-
-    std::cout << "Give values for a, b and c separated by spaces: " << std::endl;
     
     if (!(std::cin >> a >> b >> c)) {
         std::cout << "Invalid data! Try again." << std::endl;

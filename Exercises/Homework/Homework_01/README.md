@@ -17,13 +17,11 @@ int main()
     const int current_year = 2019;
 
     std::cout << "What is your birth year?" << std::endl;
-
     int birth_year = 0;
 
     if (std::cin >> birth_year) {
         // Normally we would have more validations here, but in order to keep things simple
         // we assume that the user just provides a proper birth year.
-
         const int age = current_year - birth_year;
         
         std::cout << "You will be " << age << " years old this year!" << std::endl;
@@ -52,7 +50,6 @@ int main()
 int main()
 {
     std::cout << "How wide is your square in meters?" << std::endl;
-
     double square_width = 0.0;
 
     if (std::cin >> square_width) {
@@ -85,7 +82,6 @@ int main()
 int main()
 {
     std::cout << "How long are the sides of your triangle in meters?" << std::endl;
-
     double triangle_width = 0.0;
 
     if (std::cin >> triangle_width) {
@@ -120,7 +116,6 @@ We prefer using *double* for storing decimal numbers due to fact that it has 2x 
 int main()
 {
     std::cout << "What is your number?" << std::endl;
-
     int number = 0;
 
     if (std::cin >> number) {
@@ -153,7 +148,6 @@ int main()
 int main()
 {
     std::cout << "What is the radius of your circle?" << std::endl;
-
     double circle_radius = 0.0;
 
     if (std::cin >> circle_radius) {
