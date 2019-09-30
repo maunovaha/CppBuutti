@@ -116,3 +116,61 @@ int main()
 ```
 
 The answer is 55 numbers.
+
+## Exercise 3
+
+> Write a recursive program that calculates the **_factorial_** *n!* of a given number *n*.
+> 
+> _n! = n * (n - 1) * (n - 2) * ... * 1_  
+> _if n = 4, factorial n! = 4 * 3 * 2 * 1_
+
+```cpp
+#include <iostream>
+
+int factorial(const int n)
+{
+    if (n <= 1) {
+        return n;
+    }
+
+    // When this part of the code executes recursively, and the value of `n` is 4; The program
+    // executes as follows:
+    // 
+    // return 4 * factorial(4 - 1);
+    // return 4 * 3 * factorial(3 - 1);
+    // return 4 * 3 * 2 * factorial(2 - 1);
+    // return 4 * 3 * 2 * 1; // The returned value is 24 when `n` is 4 (which is correct!).
+    return n * factorial(n - 1);
+}
+
+int main()
+{
+    std::cout << "The factorial(0) is: " << factorial(0) << "\n"
+              << "The factorial(1) is: " << factorial(1) << "\n"
+              << "The factorial(2) is: " << factorial(2) << "\n"
+              << "The factorial(3) is: " << factorial(3) << "\n"
+              << "The factorial(4) is: " << factorial(4) << "\n"
+              << "The factorial(5) is: " << factorial(5) << "\n"
+              << "The factorial(6) is: " << factorial(6) << "\n"
+              << "The factorial(7) is: " << factorial(7) << "\n"
+              << "The factorial(8) is: " << factorial(8) << "\n"
+              << "The factorial(9) is: " << factorial(9) << std::endl;
+
+    return 0;
+}
+```
+
+**Output**
+
+```
+The factorial(0) is: 0
+The factorial(1) is: 1
+The factorial(2) is: 2
+The factorial(3) is: 6
+The factorial(4) is: 24
+The factorial(5) is: 120
+The factorial(6) is: 720
+The factorial(7) is: 5040
+The factorial(8) is: 40320
+The factorial(9) is: 362880
+```
