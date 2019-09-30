@@ -204,21 +204,19 @@ bool is_odd(const int value)
     return value % 2 != 0;
 }
 
-int collatz_conjecture(const int value, int steps = 0)
+int collatz_conjecture(const int value, const int steps = 0)
 {
     if (value <= 1) {
         return steps;
     }
 
-    ++steps;
-
     if (is_odd(value)) {
         std::cout << value << " is odd." << std::endl;
-        return collatz_conjecture(value * 3 + 1, steps);
-    } 
+        return collatz_conjecture(value * 3 + 1, steps + 1);
+    }
     else {
         std::cout << value << " is even." << std::endl;
-        return collatz_conjecture(value / 2, steps);
+        return collatz_conjecture(value / 2, steps + 1);
     }
 }
 
