@@ -78,12 +78,12 @@ int main()
 > FizzBuzz is a classic interview coding question. It goes in the following way:
 > 
 > Go through all numbers from *0* to *100*.  
-> If the number is divisible by *3*, e.g. *(3, 6, 9, 12, 15...)*, then print *"Fizz"*.  
+> If the number is divisible by *3*, e.g. *(3, 6, 9, 12, 15...)*, then print *Fizz*.  
 > If the number is divisible by *5*, e.g. *(5, 10, 15, 20...)*, then print *Buzz*.  
 > If the number is divisible by *15*, then print *FizzBuzz*.  
 > If the number is not divisible by *3* or *5* print the number itself.
 > 
-> Example output =>
+> Example output =>  
 > *1*  
 > *2*  
 > *Fizz*  
