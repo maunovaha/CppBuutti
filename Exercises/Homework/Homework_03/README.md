@@ -75,33 +75,93 @@ int main()
 
 ## Exercise 3
 
+> FizzBuzz is a classic interview coding question. It goes in the following way:
+> 
+> Go through all numbers from *0* to *100*.  
+> If the number is divisible by *3*, e.g. *(3, 6, 9, 12, 15...)*, then print *"Fizz"*.  
+> If the number is divisible by *5*, e.g. *(5, 10, 15, 20...)*, then print *Buzz*.  
+> If the number is divisible by *15*, then print *FizzBuzz*.  
+> If the number is not divisible by *3* or *5* print the number itself.
+> 
+> Example output =>
+> *1*  
+> *2*  
+> *Fizz*  
+> *4*  
+> *Buzz*  
+> *Fizz*  
+> *7*  
+> *8*  
+> *Fizz*  
+> *Buzz*  
+> *11*  
+> *Fizz*  
+> *13*  
+> *14*  
+> *FizzBuzz*  
+> *16*  
+> *...*  
+
+```cpp
+#include <iostream>
+
+bool is_fizz(const int value)
+{
+    return value % 3 == 0;
+}
+
+bool is_buzz(const int value)
+{
+    return value % 5 == 0;
+}
+
+std::string to_fizzbuzz(const int value)
+{
+    std::string words;
+
+    if (is_fizz(value)) {
+        words += "Fizz";
+    }
+
+    if (is_buzz(value)) {
+        words += "Buzz";
+    }
+
+    return words.empty() ? std::to_string(value) : words;
+}
+
+int main()
+{
+    for (int i = 1; i <= 100; ++i) {
+        std::cout << to_fizzbuzz(i) << std::endl;
+    }
+
+    return 0;
+}
+```
+
+## Exercise 4 (todo later)
+
 > ... 
 
 ```cpp
 ```
 
-## Exercise 4 (extra)
+## Exercise 5 (todo later)
 
 > ... 
 
 ```cpp
 ```
 
-## Exercise 5 (extra)
+## Exercise 6 (todo later)
 
 > ... 
 
 ```cpp
 ```
 
-## Exercise 6 (extra)
-
-> ... 
-
-```cpp
-```
-
-## Exercise 7 (extra)
+## Exercise 7 (todo later)
 
 > ... 
 
