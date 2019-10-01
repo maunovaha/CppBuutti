@@ -128,8 +128,8 @@ is_hearts(-1) = false
 
 is_mark_happy(false, true)  = true
 is_mark_happy(true,  false) = false
-is_mark_happy(true,  true)  = false
-is_mark_happy(false, false) = false
+is_mark_happy(true,  true)  = true
+is_mark_happy(false, false) = true
 
 is_beach_day(true,  false, 20) = true
 is_beach_day(true,  false, 25) = true
