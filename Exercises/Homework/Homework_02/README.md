@@ -69,7 +69,7 @@ bool is_hearts(const int player_count)
 
 bool is_mark_happy(const bool stressed, const bool has_ice_cream)
 {
-    return !stressed && has_ice_cream;
+    return !stressed || has_ice_cream;
 }
 
 bool is_beach_day(const bool sunny, const bool raining, const double temperature)
@@ -300,7 +300,7 @@ bool is_valid_operand(const char operand, const std::string& allowed_operands = 
 int main()
 {
     std::cout << "What is your first number?" << std::endl;
-    double first = 0;
+    double first = 0.0;
 
     if (!(std::cin >> first)) {
         std::cout << "Invalid data! Try again." << std::endl;
@@ -308,7 +308,7 @@ int main()
     }
 
     std::cout << "What is your second number?" << std::endl;
-    double second = 0;
+    double second = 0.0;
 
     if (!(std::cin >> second)) {
         std::cout << "Invalid data! Try again." << std::endl;
@@ -356,7 +356,7 @@ int main()
 
 int generate_random_number(const int min, const int max)
 {
-    return min + rand() % (( max + 1 ) - min);
+    return min + rand() % ((max + 1) - min);
 }
 
 int main()
