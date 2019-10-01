@@ -27,7 +27,7 @@ void print_triangle(const int n, const char shape = '&')
 
 int main()
 {
-    std::cout << "Give me the value of n: " << std::endl;
+    std::cout << "Give me the value of n:" << std::endl;
     int n = 0;
 
     if (std::cin >> n) {
@@ -221,7 +221,7 @@ int collatz_conjecture(const int value, const int steps = 0)
 
 int main()
 {
-    std::cout << "Please give a whole number: " << std::endl;
+    std::cout << "Please give a whole number:" << std::endl;
     int number = 0;
 
     if (std::cin >> number) {

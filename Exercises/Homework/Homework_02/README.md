@@ -369,7 +369,7 @@ int main()
     int guessed_number = -1;
 
     do {
-        std::cout << "Guess a secret number: " << std::endl;
+        std::cout << "Guess a secret number:" << std::endl;
 
         if (!(std::cin >> guessed_number)) {
             std::cout << "Invalid data! Try again." << std::endl;

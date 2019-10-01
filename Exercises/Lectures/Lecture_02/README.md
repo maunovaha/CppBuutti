@@ -91,11 +91,11 @@ int main()
 {
     const int max_str_size = 8;
 
-    std::cout << "Give value of str1: " << std::endl;
+    std::cout << "Give value of str1:" << std::endl;
     std::string str1;
     std::cin >> str1;
 
-    std::cout << "Give value of str2: " << std::endl;
+    std::cout << "Give value of str2:" << std::endl;
     std::string str2;
     std::cin >> str2;
 
