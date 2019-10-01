@@ -3,7 +3,7 @@
 ## Exercise 1
 
 > Make a program that asks you inside an infinite while loop to input a number between *4* to *10*, but if you input another number, such as *3*, *-1* or *12*, it repeats until you do.
-
+> 
 > Example output =>  
 > *Give a number between 4 - 10:*  
 > *10*   
@@ -43,9 +43,34 @@ int main()
 
 ## Exercise 2
 
-> ... 
+> In the following program, fill in the *-----* to make a *for loop* that goes through every second number from *100* to *0*.
+> 
+> ```  
+> for(-----) {  
+>     std::cout << -----;  
+> }  
+> ```
+> 
+> Example output =>  
+> *100*  
+> *96*  
+> *94*  
+> *...*  
+> *4*  
+> *2*  
+> *0*  
 
 ```cpp
+#include <iostream>
+
+int main()
+{
+    for (int i = 100; i >= 0; i -= 2) {
+        std::cout << i << std::endl;
+    }
+
+    return 0;
+}
 ```
 
 ## Exercise 3
