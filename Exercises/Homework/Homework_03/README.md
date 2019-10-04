@@ -243,9 +243,88 @@ int main()
 
 ## Exercise 6
 
-> ... 
+> Let's create a new style of *Fibonacci* sequence. Instead of adding *2* last numbers together, add *3* last numbers together for the new number. Print *20* first numbers in this new *Fibonacci* sequence. Our *Fibonacci* sequence's first three numbers are *0*, *0* and *1*.
+>
+> For example:
+>
+> *0 0 1 => 0 + 0 + 1 = 1*  
+> *0 0 1 1 => 0 + 1 + 1 = 2*  
+> *0 0 1 1 2 => 1 + 1 + 2 = 4*  
+> *0 0 1 1 2 4 => 1 + 2 + 4 = 7*  
+> *0 0 1 1 2 4 7 => 2 + 4 + 7 = 13*  
+> *0 0 1 1 2 4 7 13*
+>
+> If you have time, try to do it both with a *for loop* and with a *recursive loop*.
 
 ```cpp
+#include <iostream>
+
+// Example sequence: `1, 1, 2, 3, 5, 8, 13, 21...`
+int fibonacci(const int n)
+{
+    if (n <= 1) {
+        return 1;
+    }
+
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Example sequence: `0, 0, 1, 1, 2, 4, 7, 13...`
+int tribonacci(const int n)
+{
+    if (n <= 1) {
+        return 0;
+    }
+    else if (n == 2) {
+        return 1;
+    }
+
+    return tribonacci(n - 1) + tribonacci(n - 2) + tribonacci(n - 3);
+}
+
+int main()
+{   
+    const int number_count = 20;
+
+    // fibonacci
+    // ------------
+
+    std::cout << "fibonacci: ";
+
+    for (int i = 0; i < number_count; ++i) {
+        std::cout << fibonacci(i);
+
+        if (i < number_count - 1) {
+            std::cout << ", ";
+        }
+    }
+
+    std::cout << std::endl;
+
+    // tribonacci
+    // ------------
+
+    std::cout << "tribonacci: ";
+
+    for (int i = 0; i < number_count; ++i) {
+        std::cout << tribonacci(i);
+
+        if (i < number_count - 1) {
+            std::cout << ", ";
+        }
+    }
+
+    std::cout << std::endl;
+
+    return 0;
+}
+```
+
+**Output**
+
+```
+fibonacci: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765
+tribonacci: 0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274, 504, 927, 1705, 3136, 5768, 10609, 19513
 ```
 
 ## Exercise 7 (todo later)
