@@ -278,7 +278,7 @@ double calculate_division(const double a, const double b)
 
 double calculate_result(const double a, const double b, const char operand)
 {
-    switch(operand) {
+    switch (operand) {
         case '+':
             return calculate_sum(a, b);
         case '-':

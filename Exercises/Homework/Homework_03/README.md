@@ -104,6 +104,7 @@ int main()
 
 ```cpp
 #include <iostream>
+#include <string>
 
 bool is_fizz(const int value)
 {
@@ -140,11 +141,52 @@ int main()
 }
 ```
 
-## Exercise 4 (todo later)
+## Exercise 4
 
-> ... 
+> Print the following structure:
+> 
+> 1234567  
+> 2345678  
+> 3456789  
+> 4567890  
+> 5678901  
+> 6789012  
+> 7890123  
+> ...
+> 
+> Until *10* using *two loops*, one inside another.
+> 
+> Instead of number *10*, input the number as an argument from the command line, for example: ```./main 7``` should print the square above.
 
 ```cpp
+#include <iostream>
+#include <string>
+#include <stdexcept>
+
+void print_number_square(const int size, const int first_number = 1)
+{
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0, number = first_number; j < size; ++j, ++number) {
+            std::cout << (i + number) % 10;
+        }
+        std::cout << "\n";
+    }
+}
+
+int main(int argv, char* argc[])
+{
+    try {
+        const int size = std::stoi(argc[1]);
+        print_number_square(size);
+    }
+    catch (const std::invalid_argument& e) {
+        std::cout << "Error! Did you run the program correctly? "
+            << "e.g. Try something like: `./main 7`\n\n" 
+            << "Detailed error: \"" << e.what() << "\"" << std::endl;
+    }
+
+    return 0;
+}
 ```
 
 ## Exercise 5 (todo later)
