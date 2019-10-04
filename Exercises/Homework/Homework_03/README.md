@@ -213,18 +213,22 @@ int main(int argv, char* argc[])
 ```cpp
 #include <iostream>
 
+bool is_prime(const int number)
+{
+    for (int i = 2; i < number; ++i) {
+        if (number % i == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 void print_prime_numbers(const int until)
 {
-    int number, divider;
-
-    for (number = 2; number <= until; ++number) {
-        for (divider = 2; divider < number; ++divider) {
-            if (number % divider == 0) {
-                break;
-            }
-        }
-        if (number == divider) {
-            std::cout << number << std::endl;
+    for (int i = 2; i <= until; ++i) {
+        if (is_prime(i)) {
+            std::cout << i << std::endl;
         }
     }
 }
@@ -237,7 +241,7 @@ int main()
 }
 ```
 
-## Exercise 6 (todo later)
+## Exercise 6
 
 > ... 
 
