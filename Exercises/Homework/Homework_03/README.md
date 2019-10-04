@@ -145,14 +145,14 @@ int main()
 
 > Print the following structure:
 > 
-> 1234567  
-> 2345678  
-> 3456789  
-> 4567890  
-> 5678901  
-> 6789012  
-> 7890123  
-> ...
+> *1234567*  
+> *2345678*  
+> *3456789*  
+> *4567890*  
+> *5678901*  
+> *6789012*  
+> *7890123*  
+> *...*
 > 
 > Until *10* using *two loops*, one inside another.
 > 
@@ -189,11 +189,52 @@ int main(int argv, char* argc[])
 }
 ```
 
-## Exercise 5 (todo later)
+## Exercise 5
 
-> ... 
+> Print all prime numbers that are under *100*. A primer number is a number that can't be divided by any other number than *1* or the number itself.
+>
+> *10* can be divided by *2* and *5* and it not a primer number.
+>
+> *11* can not be divided by numbers other than *1* or *11*, and therefore, is a primer number.
+>
+> Example output =>  
+> *2*  
+> *3*  
+> *5*  
+> *7*  
+> *11*  
+> *13*  
+> *17*  
+> *19*  
+> *23*  
+> *29*  
+> *...*
 
 ```cpp
+#include <iostream>
+
+void print_prime_numbers(const int until)
+{
+    int number, divider;
+
+    for (number = 2; number <= until; ++number) {
+        for (divider = 2; divider < number; ++divider) {
+            if (number % divider == 0) {
+                break;
+            }
+        }
+        if (number == divider) {
+            std::cout << number << std::endl;
+        }
+    }
+}
+
+int main()
+{
+    print_prime_numbers(100);
+
+    return 0;
+}
 ```
 
 ## Exercise 6 (todo later)
