@@ -153,17 +153,3 @@ int main()
 The current year is: 2019
 The current year is: 2020
 ```
-
-## Exercise 3
-
-> ...
-
-```cpp
-```
-
-## Exercise 4
-
-> ...
-
-```cpp
-```
