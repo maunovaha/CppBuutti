@@ -327,9 +327,43 @@ fibonacci: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 
 tribonacci: 0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274, 504, 927, 1705, 3136, 5768, 10609, 19513
 ```
 
-## Exercise 7 (todo later)
+## Exercise 7
 
-> ... 
+> This is a more difficult problem. Do not worry if you don't manage to do this one. Even if your code doesn't exactly work like it should, you can still return this assignment.
+>
+> Use recursion to traverse through our three splitting to *two* new paths on every step.
+>
+> ![Tree](/tree.jpg)
+>
+> The rules:
+> 
+> Starting from number *1*. Every time we take the right path we should multiply by *3*. Every time we take the left path we add *1*.
+>
+> Add every single value together on the entire tree that is *10* branches deep. The picture above is an example tree *4* branches deep.
 
 ```cpp
+#include <iostream>
+
+long long tree_traversal(const int branches, const long long n = 1)
+{
+    if (branches <= 1) {
+        return n;
+    }
+
+    return n + tree_traversal(branches - 1, n + 1) + tree_traversal(branches - 1, n * 3);
+}
+
+int main()
+{
+    std::cout << "The total value of a tree with 10 branches deep is: " 
+        << tree_traversal(10) << std::endl;
+
+    return 0;
+}
+```
+
+**Output**
+
+```
+The total value of a tree with 10 branches deep is: 523776
 ```
