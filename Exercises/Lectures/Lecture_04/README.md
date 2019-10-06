@@ -123,9 +123,35 @@ King of spades
 
 ## Exercise 2
 
-> ...
+> Create a program in which you have a function that increments the value which is passed in. (Note: The function should use *void* as a return type).
 
 ```cpp
+#include <iostream>
+
+void change_year(int& year)
+{
+    ++year;
+}
+
+int main()
+{
+    int year = 2019;
+
+    std::cout << "The current year is: " << year << std::endl;
+
+    change_year(year);
+
+    std::cout << "The current year is: " << year << std::endl;
+
+    return 0;
+}
+```
+
+**Output**
+
+```
+The current year is: 2019
+The current year is: 2020
 ```
 
 ## Exercise 3
