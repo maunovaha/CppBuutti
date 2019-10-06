@@ -1,5 +1,5 @@
 # How to compile
 
 ```
-g++ Animal/Bat.cpp Baseball/Bat.cpp Main.cpp -std=c++17 -o main
+g++ Source/Animal/Bat.cpp Source/Baseball/Bat.cpp Source/Main.cpp -std=c++17 -o main
 ```
