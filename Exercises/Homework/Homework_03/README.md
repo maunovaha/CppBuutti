@@ -333,7 +333,7 @@ tribonacci: 0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274, 504, 927, 1705, 3136,
 >
 > Use recursion to traverse through our three splitting to *two* new paths on every step.
 >
-> ![Tree](/tree.jpg)
+> ![Tree](tree.jpg)
 >
 > The rules:
 > 
