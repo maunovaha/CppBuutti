@@ -63,10 +63,10 @@ The solution can be found [here](Exercise_2/).
 Created a person with id: 1
 Created a person with id: 2
 Created a person with id: 3
-The method `Person::debug()` has been called 1 time(s).
-The method `Person::debug()` has been called 2 time(s).
-The method `Person::debug()` has been called 3 time(s).
-The method `Person::debug()` has been called 4 time(s).
+The method Person::debug() has been called 1 time(s).
+The method Person::debug() has been called 2 time(s).
+The method Person::debug() has been called 3 time(s).
+The method Person::debug() has been called 4 time(s).
 Current `Person::id` value is: 3
 ```
 
