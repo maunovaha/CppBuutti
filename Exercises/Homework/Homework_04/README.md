@@ -48,10 +48,10 @@ Active member: true
 > Create a function that has a *static counter* inside which counts how many times the function has been called, and prints the value of it.
 >
 > Example output =>  
-> *The method `Person::debug()` has been called 1 time(s).*  
-> *The method `Person::debug()` has been called 2 time(s).*  
-> *The method `Person::debug()` has been called 3 time(s).*  
-> *The method `Person::debug()` has been called 4 time(s).*
+> *The method Person::debug() has been called 1 time(s).*  
+> *The method Person::debug() has been called 2 time(s).*  
+> *The method Person::debug() has been called 3 time(s).*  
+> *The method Person::debug() has been called 4 time(s).*
 >
 > Also add an *id* field for the *Person struct* (from the last assignment) that starts from *1* and increments by one for every new person created *2, 3, 4, 5...* and so forth. Use *static* to keep track of how many persons have been created to give everyone a unique *id*.
 
