@@ -67,7 +67,7 @@ The method Person::debug() has been called 1 time(s).
 The method Person::debug() has been called 2 time(s).
 The method Person::debug() has been called 3 time(s).
 The method Person::debug() has been called 4 time(s).
-Current `Person::id` value is: 3
+Current Person::id value is: 3
 ```
 
 ## Exercise 3
