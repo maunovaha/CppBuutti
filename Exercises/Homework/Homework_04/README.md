@@ -72,9 +72,19 @@ Current Person::id value is: 3
 
 ## Exercise 3
 
-> 
+> Create a *Vector struct*.
+>
+> The *Vector* should have *4* properties. Its *origin (x, y)*, and its *direction (x, y)*. 
+>
+> Create a function inside the struct that prints the data of the vector in the following format: *Vector, origin {x, y}, direction {x, y}*.
 
-```cpp
+The solution can be found [here](Exercise_3/).
+
+**Output**
+
+```
+Vector, origin {0, 0}, direction {20, 20}
+Vector, origin {120, 120}, direction {45, 45}
 ```
 
 ## Exercise 4

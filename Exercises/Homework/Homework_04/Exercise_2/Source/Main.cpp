@@ -13,7 +13,7 @@ int main()
     Person::debug(); // The method `debug()` is static, so we can call it without instance as well.
 
     // This works because by default variables and functions are public when using struct.
-    std::cout << "Current `Person::id` value is: " << Person::id << std::endl;
+    std::cout << "Current Person::id value is: " << Person::id << std::endl;
 
     return 0;
 }
