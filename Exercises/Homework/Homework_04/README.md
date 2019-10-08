@@ -117,21 +117,29 @@ Vectors are not perpendicular!
 
 ## Exercise 5
 
-> 
+> Create a new struct called *Point* that has *x* and *y* properties. Then replace the *origin* and *direction* fields of the previously used *Vector struct* with the new *Point struct*.
+>
+> After this, create a function *end_point* inside the *Vector struct* that returns the point where the vector ends.
 
-```cpp
+The solution can be found [here](Exercise_5/).
+
+**Output**
+
+```
+Vector, origin {-1, -1}, direction {3, 4}
+The vector end point is: {2, 3}
 ```
 
 ## Exercise 6
 
-> 
+> ...
 
 ```cpp
 ```
 
 ## Exercise 7
 
-> 
+> ... TODO (later on) ...
 
 ```cpp
 ```
