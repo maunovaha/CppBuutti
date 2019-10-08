@@ -83,15 +83,36 @@ The solution can be found [here](Exercise_3/).
 **Output**
 
 ```
-Vector, origin {0, 0}, direction {20, 20}
-Vector, origin {120, 120}, direction {45, 45}
+Vector, origin {1, 2}, direction {3, 4}
+Vector, origin {5, 6}, direction {7, 8}
 ```
 
 ## Exercise 4
 
-> 
+> Create a function that takes two vectors and returns *true* if they are *perpendicular* and *false* if they are not.
+>
+> - *Perpendicular* means that the *angle between the vectors is 90 degrees.*
+>
+> - Vectors are *perpendicular* if their *dot product is 0*.
+>
+> - *Dot product* is calculated using the directions of the vectors and for vectors *{x1, y1}* and *{x2, y2}* it is _x1 * x2 + y1 * y2_.
 
-```cpp
+The solution can be found [here](Exercise_4/).
+
+**Output**
+
+```
+Vector, origin {0, 0}, direction {0, 5}
+Vector, origin {0, 0}, direction {5, 0}
+Vectors are perpendicular!
+
+Vector, origin {0, 0}, direction {2, 5}
+Vector, origin {0, 0}, direction {10, -4}
+Vectors are perpendicular!
+
+Vector, origin {0, 0}, direction {22, 65}
+Vector, origin {0, 0}, direction {60, 25}
+Vectors are not perpendicular!
 ```
 
 ## Exercise 5
