@@ -2,10 +2,10 @@
 
 int main()
 {
-    Vector v1{0, 0, 20, 20};
+    Vector v1{1, 2, 3, 4};
     v1.print();
 
-    Vector v2{120, 120, 45, 45};
+    Vector v2{5, 6, 7, 8};
     v2.print();
 
     return 0;

@@ -9,5 +9,5 @@ Vector::Vector(int origin_x, int origin_y, int direction_x, int direction_y)
 void Vector::print() const
 {
     std::cout << "Vector, origin {" << origin_x << ", " << origin_y << "}, " 
-              << "direction {" << direction_y << ", " << direction_y << "}" << std::endl;
+              << "direction {" << direction_x << ", " << direction_y << "}" << std::endl;
 }
