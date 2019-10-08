@@ -132,9 +132,21 @@ The vector end point is: {2, 3}
 
 ## Exercise 6
 
-> ...
+> Split your *Point* and *Vector* into separate files (*Point.cpp* and *Vector.cpp*) and use headers to connect them all together. Have all your *Point* and *Vector* functions to be inside your own made *geometry* namespace.
+>
+> Then get input for *2* vectors inside *main*. Create the vectors, and check if they are *perpendicular* or not.
 
-```cpp
+The solution can be found [here](Exercise_6/).
+
+**Output**
+
+```
+Give the first vector origin and direction as e.g. `0 0 0 5`:
+0 0 0 5
+Give the second vector origin and direction as e.g. `0 0 5 0`:
+0 0 5 0
+
+Vectors are perpendicular!
 ```
 
 ## Exercise 7
