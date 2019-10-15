@@ -83,12 +83,49 @@ int main()
 
 ## Exercise 3
 
-> ...
+> Make a function that takes in a *vector*. Increase all numbers in the *vector* by *10* inside a *for loop*. Call your function in *main* and print the numbers (also in *main*). Remember to use references to not make copies!
 
 ```cpp
+#include <iostream>
+#include <vector>
+
+void increment_numbers(std::vector<int>& numbers, const int increment)
+{
+    for (auto& number : numbers) {
+        number += increment;
+    }
+}
+
+void print_numbers(const std::vector<int>& numbers)
+{
+    for (const auto& number : numbers) {
+        std::cout << number << " ";
+    }
+    std::cout << "\n" << std::endl;
+}
+
+int main()
+{
+    std::vector<int> numbers{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    std::cout << "Numbers before: " << std::endl;
+    print_numbers(numbers);
+
+    increment_numbers(numbers, 10);
+
+    std::cout << "Numbers after: " << std::endl;
+    print_numbers(numbers);
+
+    return 0;
+}
 ```
 
 **Output**
 
 ```
+Numbers before: 
+1 2 3 4 5 6 7 8 9 10 
+
+Numbers after: 
+11 12 13 14 15 16 17 18 19 20
 ```
