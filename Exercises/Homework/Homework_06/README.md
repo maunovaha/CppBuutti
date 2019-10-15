@@ -185,7 +185,7 @@ int main()
     print_fruits_basked(fruits_basked);
 
     for (;;) {
-        std::string fruit = read_fruit();
+        const std::string fruit = read_fruit();
         fruits_basked.insert(fruit);
 
         print_fruits_basked(fruits_basked);
