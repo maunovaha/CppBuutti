@@ -17,7 +17,7 @@ int Vector::dot(const Vector& a, const Vector& b)
 
 Point Vector::end_point() const
 {
-    return {origin.x + direction.x, origin.y + direction.y}; 
+    return {origin.x + direction.x, origin.y + direction.y};
 }
 
 void Vector::print() const
