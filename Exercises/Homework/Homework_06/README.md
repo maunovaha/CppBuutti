@@ -26,6 +26,8 @@ int main()
         std::cout << multiply_odd_number(number) << " ";
     }
 
+    std::cout << std::endl;
+
     return 0;
 }
 ```
@@ -38,14 +40,45 @@ int main()
 
 ## Exercise 2
 
-> ...
+> Fill an *std::array* of length *10* with numbers *2, 4, 6, 8...* and so on using a *for loop*. Use *for loop* with *range operator :* to print out the loop in the end of a program.
 
 ```cpp
+#include <iostream>
+#include <array>
+#include <cstddef>
+
+template<std::size_t N>
+void fill_array(std::array<int, N>& container)
+{
+    for (int i = 0; i < container.size(); ++i) {
+        container.at(i) = (i + 1) * 2;
+    }
+}
+
+template<std::size_t N>
+void print_array(const std::array<int, N>& container)
+{
+    for (const auto& number : container) {
+        std::cout << number << " ";
+    }
+    std::cout << std::endl;
+}
+
+int main()
+{
+    std::array<int, 10> numbers;
+
+    fill_array(numbers);
+    print_array(numbers);
+
+    return 0;
+}
 ```
 
 **Output**
 
 ```
+2 4 6 8 10 12 14 16 18 20
 ```
 
 ## Exercise 3
