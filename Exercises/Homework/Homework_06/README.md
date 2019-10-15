@@ -129,3 +129,68 @@ Numbers before:
 Numbers after: 
 11 12 13 14 15 16 17 18 19 20
 ```
+
+## Exercise 4
+
+> Make a *std::set* of *fruits* and put *banana*, *apple* and *peach* inside. Find out using google how to put a new item in *std::set*. Make an *infinite loop* where you can add fruits by your input and it keeps printing out the entire set every time.
+> 
+> Example output =>  
+> *The fruits basked contains apple, banana, peach. Tell me more fruits?*  
+> *kiwi*  
+> *The fruits basked contains apple, banana, kiwi, peach. Tell me more fruits?*  
+> *apricot*  
+> *The fruits basked contains apple, apricot, banana, kiwi, peach. Tell me more fruits?*
+
+```cpp
+#include <iostream>
+#include <set>
+#include <string>
+#include <utility>
+
+void print_fruits_basked(const std::set<std::string>& fruits_basked)
+{
+    if (fruits_basked.empty()) {
+        std::cout << "The fruits basked is empty!" << std::endl;
+        return;
+    }
+
+    std::cout << "The fruits basked contains ";
+
+    int counter = 0;
+
+    for (const auto& fruit : fruits_basked) {
+        std::cout << fruit;
+
+        if (counter < fruits_basked.size() - 1) {
+            std::cout << ", ";
+        }
+
+        ++counter;
+    }
+
+    std::cout << ". Tell me more fruits?" << std::endl;
+}
+
+std::string read_fruit()
+{
+    std::string fruit;
+    std::getline(std::cin, fruit);
+
+    return std::move(fruit);
+}
+
+int main()
+{
+    std::set<std::string> fruits_basked{"banana", "apple", "peach"};
+    print_fruits_basked(fruits_basked);
+
+    for (;;) {
+        std::string fruit = read_fruit();
+        fruits_basked.insert(fruit);
+
+        print_fruits_basked(fruits_basked);
+    }
+
+    return 0;
+}
+```
