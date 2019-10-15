@@ -42,12 +42,16 @@ The solution can be found [here](Exercise_1/).
 > *1996*  
 > *Your username is Alex1996!*
 
+The solution can be found [here](Exercise_2/).
+
 ## Exercise 3
 
 > Make a *lottery generator* that returns an *array* with *7* random numbers between *1* and *39* and prints them all to the console. *If you can: Sort them using Array::sort and also randomize duplicates again*.
 >
 > Example output =>  
 > *Your lottery numbers are: 2, 5, 8, 23, 30, 32, 39*
+
+The solution can be found [here](Exercise_3/).
 
 ## Exercise 4 (Bonus, TODO later on..)
 
