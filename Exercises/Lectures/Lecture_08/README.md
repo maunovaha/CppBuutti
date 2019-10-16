@@ -22,14 +22,15 @@
 
 int main()
 {
-    std::vector<int> numbers = {1, 2, 3, 5};
+    const std::vector<int> numbers = {1, 2, 3, 5};
 
-    auto make_pyramid = [](std::string a, int b)
+    auto make_pyramid = [](const std::string& a, const int b)
     {
-        return std::move(a) + std::string(b, 'a') + "\n";
+        return a + std::string(b, 'a') + "\n";
     };
 
-    std::string pyramid = std::accumulate(numbers.begin(), numbers.end(), std::string{}, make_pyramid);
+    const std::string pyramid = std::accumulate(numbers.begin(), 
+        numbers.end(), std::string{}, make_pyramid);
 
     std::cout << pyramid;
 
