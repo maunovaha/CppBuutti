@@ -20,7 +20,7 @@ std::string capitalize(const std::string& word)
     }
 
     std::string capitalized_word = word;
-    capitalized_word.at(0) = std::toupper(word.at(0));
+    capitalized_word.first() = std::toupper(word.first());
 
     return capitalized_word;
 }
