@@ -149,6 +149,63 @@ int main()
 > Take *2* floating numbers as input *a* and *b*. Make a function *divide* that divides *a / b*. Check in this function that *b is not zero*. If *b* is zero throw a *std::string* with text *"Zero division error"*. Catch your error in *main* and print the thrown string *"Zero division error"*.
 
 ```cpp
+#include <iostream>
+#include <stdexcept>
+
+void reset()
+{
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+float read_float()
+{
+    float value{};
+    const bool success = static_cast<bool>(std::cin >> value);
+
+    reset();
+
+    if (!success) {
+        std::cerr << "Invalid value. Try again." << std::endl;
+        return read_float();
+    }
+
+    return value;
+}
+
+float divide(const float a, const float b)
+{
+    if (b == 0.0f) {
+        // We could throw std::string here, but it's bad practice, so using
+        // std::invalid_argument instead.
+        // 
+        // See: https://stackoverflow.com/questions/134569/c-exception-throwing-stdstring
+        throw std::invalid_argument("Zero division error");
+    }
+
+    return a / b;
+}
+
+int main()
+{
+    std::cout << "Give the value for number (a):" << std::endl;
+    const float a = read_float();
+
+    std::cout << "Give the value for number (b):" << std::endl;
+    const float b = read_float();
+
+    try {
+        const float result = divide(a, b);
+
+        std::cout << "Number " << a << " divided by " << b << " is " << result << std::endl;
+    }
+    catch (const std::invalid_argument& e) {
+        std::cout << e.what() << std::endl;
+        return -1;
+    }
+
+    return 0;
+}
 ```
 
 ## Exercise 6
