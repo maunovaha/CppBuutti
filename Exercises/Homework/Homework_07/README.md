@@ -244,11 +244,11 @@ int main()
 }
 ```
 
-## Exercise 7 _**TODO later on...**_
+## Exercise 7 _**(todo later on...)**_
 
 > Read the top *1000* words from a [file](https://www.ef.com/ca/english-resources/english-vocabulary/top-1000-words/) into your program. Shuffle them using algorithm we learned last week and replace the file with the words in the new random order. Every time you run this program you should get a new random word.
 
-## Exercise 8 _**TODO later on...**_
+## Exercise 8 _**(todo later on...)**_
 
 > When you get input for the national identification number throw an error if it isn't a valid identification number. You can see the rules for the valid identification numbers from [here](https://en.wikipedia.org/wiki/National_identification_number#Finland) and [here](https://fi.wikipedia.org/wiki/Henkilötunnus).
 
@@ -290,7 +290,7 @@ Top 20 most used words in the book
 "have" appears 1049 times.
 ```
 
-## Exercise 10 _**TODO later on...**_
+## Exercise 10 _**(todo later on...)**_
 
 > Continue previous example, but make a file writer of your own design where the program saves all the people. You can use one line per person for example.
 >
