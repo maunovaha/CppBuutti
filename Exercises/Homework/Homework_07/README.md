@@ -40,7 +40,7 @@ int main()
 
 ## Exercise 2
 
-> Find the amount of times you need to multiply *2* by itself so that it the result will be over one billion using a while loop *2*2*2*2*2... > 1 000 000 000* or *2 n > 1 000 000 000*.
+> Find the amount of times you need to multiply *2* by itself so that it the result will be over one billion using a while loop _2*2*2*2*2... > 1 000 000 000_ or *2 n > 1 000 000 000*.
 
 ```cpp
 #include <iostream>
@@ -71,26 +71,25 @@ Multiplied 2 by itself 29 times.
 
 ## Exercise 3
 
-> Create a *Person struct* with *first_name*, *last_name* and *age*. Fill this with your own input. Make a function inside the struct that prints all the data of the user if the creation of the person was successful. If you input *age* as a negative number or as a number over *130* print a message telling the user that their age is invalid.
+> Create a *Person struct* with *first_name*, *last_name* and *age*. Fill this with your own input. Make a function inside the struct that prints all the data of the user if the creation of the person was successful. If you input *age* below *zero* or as a number over *130* print a message telling the user that their age is invalid.
 >
 > Example output =>  
-> *What is the first name:*  
+> *What is the first name?*  
 > *Mikko*  
-> *And last name?:*  
+> *And last name?*  
 > *Mallikas*  
-> *And age?:*  
+> *And age?*  
 > *-4*  
 > *That is not a valid age!*  
-> *What is the first name:*  
+> *What is the first name?*  
 > *Mikko*  
-> *And last name?:*  
+> *And last name?*  
 > *Mallikas*  
-> *And age?:*  
+> *And age?*  
 > *93*  
 > *--- Mikko Mallikas, age 93 ---*
 
-```cpp
-```
+The solution can be found [here](Exercise_3/).
 
 ## Exercise 4
 
