@@ -11,10 +11,10 @@ Application::Application()
 void Application::run()
 {
     std::cout << "What is the first name?" << std::endl;
-    std::string first_name = InputReader::read_str();
+    const std::string first_name = InputReader::read_str();
 
     std::cout << "And last name?" << std::endl;
-    std::string last_name = InputReader::read_str();
+    const std::string last_name = InputReader::read_str();
 
     std::cout << "And age?" << std::endl;
     int age{};
