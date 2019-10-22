@@ -246,8 +246,58 @@ int main()
 
 ## Exercise 7
 
-> Read the top *1000* words from a file into your program... Shuffle them using algorithm we learned last week and replace the file with the words in the new random order. Every time you run this program you should get a new random word.
+> Read the top *1000* words from a [file](https://www.ef.com/ca/english-resources/english-vocabulary/top-1000-words/) into your program. Shuffle them using algorithm we learned last week and replace the file with the words in the new random order. Every time you run this program you should get a new random word.
 
-```cpp
+_**TODO later on...**_
+
+## Exercise 8
+
+> When you get input for the national identification number throw an error if it isn't a valid identification number. You can see the rules for the valid identification numbers from [here](https://en.wikipedia.org/wiki/National_identification_number#Finland) and [here](https://fi.wikipedia.org/wiki/Henkilötunnus).
+
+_**TODO later on...**_
+
+## Exercise 9
+
+> Go to Project Gutenberg. Open [e-book library](https://www.gutenberg.org/browse/scores/top) and download a book of your choice.
+>
+> Read the file and using an *unordered_map* count all the words in the entire text. Print out the top *20* most used words in the text. Remember to catch errors if the file doesn't exist.
+
+The solution can be found [here](Exercise_9/).
+
+**Output**
+
+```
+===============================================
+Top 20 most used words in the book
+===============================================
+"the" appears 7984 times.
+"and" appears 5754 times.
+"to" appears 4504 times.
+"i" appears 4499 times.
+"of" appears 3710 times.
+"a" appears 2933 times.
+"he" appears 2509 times.
+"in" appears 2475 times.
+"that" appears 2365 times.
+"was" appears 1804 times.
+"it" appears 1736 times.
+"as" appears 1561 times.
+"we" appears 1493 times.
+"for" appears 1488 times.
+"is" appears 1456 times.
+"his" appears 1445 times.
+"not" appears 1314 times.
+"with" appears 1306 times.
+"my" appears 1213 times.
+"you" appears 1197 times.
+"at" appears 1082 times.
+"have" appears 1049 times.
 ```
 
+## Exercise 10
+
+> Continue previous example, but make a file writer of your own design where the program saves all the people. You can use one line per person for example.
+>
+> When you open the app again it should read in all the people. You should also be able to delete people and if you have time edit people (if they change their last name, for example). If you don't get any ideas on how to save the data look at *.csv files* that work also on excel / openoffice calc.
+
+_**TODO later on...**_
