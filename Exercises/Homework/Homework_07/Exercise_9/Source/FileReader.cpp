@@ -18,7 +18,7 @@ std::unordered_map<std::string, int> FileReader::read(const std::string& file_na
         std::string word;
         file_stream >> word;
 
-        std::transform(word.begin(), word.end(), word.begin(), [](char letter)
+        std::transform(word.begin(), word.end(), word.begin(), [](const char letter)
         {
             return std::tolower(letter);
         });
