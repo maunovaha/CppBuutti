@@ -93,9 +93,55 @@ The solution can be found [here](Exercise_3/).
 
 ## Exercise 4
 
-> Make a *vector* filled with *strings*. Get int as input and using the *vector.at()* function get the element based on the input integer. Catch the *std::out_of_range* error that you get if you input a too large number and print an error message.
+> Make a *vector* filled with *strings*. Get *int* as input and using the *vector.at()* function get the element based on the input integer. Catch the *std::out_of_range* error that you get if you input a too large number and print an error message.
 
 ```cpp
+#include <iostream>
+#include <vector>
+#include <string>
+#include <limits>
+#include <stdexcept>
+
+void reset()
+{
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+int read_int()
+{
+    int value{};
+    const bool success = static_cast<bool>(std::cin >> value);
+
+    reset();
+
+    if (!success) {
+        std::cerr << "Invalid value. Try again." << std::endl;
+        return read_int();
+    }
+
+    return value;
+}
+
+int main()
+{
+    const std::vector<std::string> names = {"Mauno", "Pekka", "Bazi"};
+
+    std::cout << "Give a slot number: " << std::endl;
+    const int slot = read_int();
+
+    try {
+        const std::string name = names.at(slot);
+        std::cout << "The name at slot " << slot << " is " << name << std::endl;
+    } 
+    catch (const std::out_of_range& e) {
+        std::cerr << "The given slot " << slot << " is outside the range of names (last slot: " 
+                  << (names.size() - 1) << ")" << std::endl;
+        return -1;
+    }
+
+    return 0;
+}
 ```
 
 ## Exercise 5
