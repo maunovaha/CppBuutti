@@ -47,7 +47,7 @@ int main()
 
 int main()
 {   
-    const int billion = 1000000000;
+    const int billion = 1'000'000'000;
 
     int times{};
     int n = 2;
