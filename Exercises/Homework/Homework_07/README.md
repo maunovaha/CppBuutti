@@ -40,9 +40,33 @@ int main()
 
 ## Exercise 2
 
-> Find the amount of times you need to multiply 2 by itself so that it the result will be over one billion (1 miljardi) using a while loop *2*2*2*2*2... > 1 000 000* or *2 n > 1 000 000*.
+> Find the amount of times you need to multiply *2* by itself so that it the result will be over one billion using a while loop *2*2*2*2*2... > 1 000 000 000* or *2 n > 1 000 000 000*.
 
 ```cpp
+#include <iostream>
+
+int main()
+{   
+    const int billion = 1000000000;
+
+    int times{};
+    int n = 2;
+
+    while (n < billion) {
+        n *= 2;
+        ++times;
+    }
+
+    std::cout << "Multiplied 2 by itself " << times << " times." << std::endl;
+
+    return 0;
+}
+```
+
+**Output**
+
+```
+Multiplied 2 by itself 29 times.
 ```
 
 ## Exercise 3
