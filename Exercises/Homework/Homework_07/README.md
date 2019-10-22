@@ -244,17 +244,13 @@ int main()
 }
 ```
 
-## Exercise 7
+## Exercise 7 _**TODO later on...**_
 
 > Read the top *1000* words from a [file](https://www.ef.com/ca/english-resources/english-vocabulary/top-1000-words/) into your program. Shuffle them using algorithm we learned last week and replace the file with the words in the new random order. Every time you run this program you should get a new random word.
 
-_**TODO later on...**_
-
-## Exercise 8
+## Exercise 8 _**TODO later on...**_
 
 > When you get input for the national identification number throw an error if it isn't a valid identification number. You can see the rules for the valid identification numbers from [here](https://en.wikipedia.org/wiki/National_identification_number#Finland) and [here](https://fi.wikipedia.org/wiki/Henkilötunnus).
-
-_**TODO later on...**_
 
 ## Exercise 9
 
@@ -294,10 +290,8 @@ Top 20 most used words in the book
 "have" appears 1049 times.
 ```
 
-## Exercise 10
+## Exercise 10 _**TODO later on...**_
 
 > Continue previous example, but make a file writer of your own design where the program saves all the people. You can use one line per person for example.
 >
 > When you open the app again it should read in all the people. You should also be able to delete people and if you have time edit people (if they change their last name, for example). If you don't get any ideas on how to save the data look at *.csv files* that work also on excel / openoffice calc.
-
-_**TODO later on...**_
