@@ -213,6 +213,35 @@ int main()
 > Write *1000* times in a file *"I will not automate my homework again"*. ;)
 
 ```cpp
+#include <iostream>
+#include <string>
+#include <fstream>
+
+class FileWriter {
+public:
+    static void write(const std::string& file_name, const std::string& text, const int times = 1);
+};
+
+void FileWriter::write(const std::string& file_name, const std::string& text, const int times)
+{
+    std::fstream file_stream;
+    file_stream.open(file_name, file_stream.trunc | file_stream.out);
+
+    if (!file_stream.is_open()) {
+        throw std::runtime_error("Cannot open " + file_name + " for writing!");
+    }
+
+    for (int i = 0; i < times; ++i) {
+        file_stream << text << "\n";
+    }
+}
+
+int main()
+{
+    FileWriter::write("confession.txt", "I will not automate my homework again.", 1000);
+
+    return 0;
+}
 ```
 
 ## Exercise 7
