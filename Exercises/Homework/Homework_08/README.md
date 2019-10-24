@@ -32,7 +32,7 @@
 
 ## Exercise 2
 
-> In last homework, we made a *Person struct*. Make a *Person class* instead that works in the same way.
+> In the last homework, we made a *Person struct*. Make a *Person class* instead that works in the same way.
 
 ```cpp
 ```
@@ -55,7 +55,7 @@
 
 > Continue the *Vector2 class* we made at the lecture and overload the *<< operator* to easily use *std::cout* to print our point values.
 >
-> By doing this, e.g. ```cpp std::cout << my_point << std::endl;``` should print somethung like ```{x, y}```.
+> By doing this, e.g. ```cpp std::cout << my_point << std::endl;``` should print something like ```(x, y)```.
 
 ```cpp
 ```
@@ -82,12 +82,20 @@
 > *Type the car make and operation (e.g. `Toyota drive 30km`):*  
 > *Toyota drive 30km*  
 > *Toyota - 53.02 litres left - 30km driven*  
+>
+> *Type the car make and operation (e.g. `Toyota drive 30km`):*  
 > *Toyota drive 700km*  
 > *Toyota - 6.82 litres left - 730km driven*  
+>
+> *Type the car make and operation (e.g. `Toyota drive 30km`):*  
 > *Toyota drive 250km*  
 > *Can't! Not enough fuel!*  
+>
+> *Type the car make and operation (e.g. `Toyota drive 30km`):*  
 > *Toyota fill*  
 > *Toyota - Filled tank. Costs 72.27€ for 48.18 litres.*  
+>
+> *Type the car make and operation (e.g. `Toyota drive 30km`):*  
 > *Toyota drive 250km*  
 > *Toyota - 38.5 litres left - 980km driven*
 
