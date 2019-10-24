@@ -157,7 +157,7 @@ is_johnny_happy("Sunday",    false, true)  = false
 > The pricing table currently looks like this:
 > 
 > | Group         | Price         |  
-> | ------------- |:-------------:|  
+> | ------------- | ------------- |  
 > | Adults        | 3.80€         |  
 > | Children 0-16 | 2.40€         |  
 > | Seniors 65+   | 2.40€         |  
