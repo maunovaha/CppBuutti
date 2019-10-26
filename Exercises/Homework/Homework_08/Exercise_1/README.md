@@ -7,23 +7,23 @@
 > If Taxi journey is allowed, make another function to calculate how much it will cost. Taxi in Oulu costs *5€ + 1.80€/km*.
 >
 > Example output =>  
-> ==========================================  
+> \==========================================  
 > Started to record Taxi trips for Buutti Oy  
-> ==========================================
+> \==========================================
 >
-> -------------------------------------------------  
+> \-------------------------------------------------  
 > The people of the company have recorded 0 trips.  
-> -------------------------------------------------
+> \-------------------------------------------------
 >
 > What is the next trip length in km?  
 > 2  
 > How about the temperature in Celcius?  
 > 20  
-> You are not allowed to use Taxi!  
+> You are not allowed to use Taxi!
 >
-> -------------------------------------------------  
+> \-------------------------------------------------  
 > The people of the company have recorded 0 trips.  
-> -------------------------------------------------
+> \-------------------------------------------------
 >
 > What is the next trip length in km?  
 > 8  
@@ -32,9 +32,9 @@
 > You can use Taxi!  
 > Taxi costs 19.40€  
 >
-> -------------------------------------------------  
+> \-------------------------------------------------  
 > The people of the company have recorded 1 trips.  
-> -------------------------------------------------  
+> \-------------------------------------------------  
 >
 > What is the next trip length in km?  
 > 2  
@@ -43,9 +43,9 @@
 > You can use Taxi!  
 > Taxi costs 8.60€
 >
-> -------------------------------------------------  
+> \-------------------------------------------------  
 > The people of the company have recorded 2 trips.  
-> -------------------------------------------------
+> \-------------------------------------------------
 
 ## How to compile
 
