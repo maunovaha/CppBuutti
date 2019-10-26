@@ -18,7 +18,7 @@ void TripRecorder::record()
     display_trip_count();
 
     std::cout << "What is the next trip length in km?\n";
-    const float trip_length = InputReader::read<float>("Invalid trip length. Try again.");
+    const float trip_length = InputReader::read_min<float>(1, "Invalid trip length. Try again.");
 
     std::cout << "How about the temperature in Celcius?\n";
     const float temperature = InputReader::read<float>("Invalid temperature. Try again.");
