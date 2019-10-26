@@ -1,7 +1,5 @@
 # Exercise 1
 
-## Task
-
 > A company has a rule which allows employees to use a taxi if a work related journey is over *3* kilometers or it's under *-15* celsius. Make a function that returns if person is allowed to use a taxi that takes in *float distance* and *float temperature*. Make also inputs to get in data.
 >
 > If Taxi journey is allowed, make another function to calculate how much it will cost. Taxi in Oulu costs *5€ + 1.80€/km*.
