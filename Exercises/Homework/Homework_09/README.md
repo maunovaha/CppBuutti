@@ -114,8 +114,91 @@ Largest number in vector: "{5, 4, 3, 1}" is "5"
 ## Exercise 3
 
 > Make a function that makes a new random generator and *std::shuffles* any type of container (test with *string*, *vector* and *map*) using templates.
+>
+> **NOTE:** In place of *map* I decided to use *array* because *map* contains <key, value> -pairs so it would have been troublesome. )
 
 ```cpp
+include <iostream>
+#include <string>
+#include <vector>
+#include <array>
+#include <random>
+#include <ctime>
+#include <algorithm>
+#include <iomanip>
+#include <sstream>
+
+class Random {
+public:
+    Random() = delete;
+    static std::mt19937& generator()
+    {
+        static std::mt19937 mt_rand(std::time(nullptr));
+        return mt_rand;
+    }
+};
+
+template <typename T>
+void shuffle_container(T& container)
+{
+    std::shuffle(container.begin(), container.end(), Random::generator());
+}
+
+template <typename T>
+std::string to_str(const T& value, const int precision = 2)
+{
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(precision) << value;
+
+    return stream.str();
+}
+
+template <typename T>
+std::string to_sentence(const T& container)
+{
+    std::string str;
+
+    for (int i = 0; i < container.size(); ++i) {
+        str += to_str(container.at(i));
+
+        if (i < container.size() - 1) {
+            str += ", ";
+        }
+    }
+
+    return str;
+}
+
+template <typename T>
+void print_and_shuffle(T& container)
+{
+    std::cout << "Shuffling \"" << to_sentence(container) << "\" results to \"";
+
+    shuffle_container(container);
+
+    std::cout << to_sentence(container) << "\"\n";
+}
+
+int main()
+{
+    std::vector<int> grades = {1, 2, 3, 4, 5};
+    std::array<float, 3> temperatures = {-11.4, 32.2f, 45.4};
+    std::string alphabet = "abcdef";
+
+    print_and_shuffle(grades);
+    print_and_shuffle(temperatures);
+    print_and_shuffle(alphabet);
+
+    return 0;
+}
+```
+
+**Output**
+
+```
+Shuffling "1, 2, 3, 4, 5" results to "4, 3, 2, 1, 5"
+Shuffling "-11.40, 32.20, 45.40" results to "-11.40, 45.40, 32.20"
+Shuffling "a, b, c, d, e, f" results to "e, b, d, f, c, a"
 ```
 
 ## Exercise 4
