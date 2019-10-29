@@ -203,7 +203,73 @@ Shuffling "a, b, c, d, e, f" results to "e, b, d, f, c, a"
 
 ## Exercise 4
 
-> Make your own class *NatoAlphabet* that holds a *std::string* and casts chars and *std::strings* into *NatoAlphabet* type. And *NatoAlphabet* into strings and chars.
+> Make your own class *NatoAlphabet* that holds a *std::string* and casts chars and *std::strings* into *NatoAlphabet* type. And *NatoAlphabet* into strings and chars. Check out [NatoAlphabet at wikipedia](https://en.wikipedia.org/wiki/NATO_phonetic_alphabet).
 
 ```cpp
+#include <iostream>
+#include <string>
+#include <ostream>
+#include <unordered_map>
+
+class NatoAlphabet {
+public:
+    NatoAlphabet(const char letter) : letter_{letter}
+    {
+    }
+
+    NatoAlphabet(const std::string& word) : NatoAlphabet{word.front()}
+    {
+    }
+
+    /* explicit */ inline operator char() const
+    {
+        return letter_;
+    }
+
+    /* explicit */ inline operator std::string() const
+    {
+        return alphabet_.at(letter_);
+    }
+
+    friend std::ostream& operator <<(std::ostream& os, const NatoAlphabet& other)
+    {
+        os << other.letter_;
+        return os;
+    }
+private:
+    const char letter_;
+    const std::unordered_map<char, std::string> alphabet_ = {
+        {'a', "alpha"},  {'b', "bravo"},    {'c', "charlie"},
+        {'d', "delta"},  {'e', "echo"},     {'f', "foxtrot"},
+        {'g', "golf"},   {'h', "hotel"},    {'i', "india"},
+        {'j', "juliet"}, {'k', "kilo"},     {'l', "lima"},
+        {'m', "mike"},   {'n', "november"}, {'o', "oscar"},
+        {'p', "papa"},   {'q', "quebec"},   {'r', "romeo"},
+        {'s', "sierra"}, {'t', "tango"},    {'u', "uniform"},
+        {'v', "victor"}, {'w', "wiskey"},   {'x', "x-ray"},
+        {'y', "yankee"}, {'z', "zulu"}
+    };
+};
+
+int main()
+{
+    const NatoAlphabet c{'c'};
+    const std::string word = c;
+
+    std::cout << "word: " << word << "\n";
+
+    const NatoAlphabet november{"november"};
+    const char letter = november;
+
+    std::cout << "letter: " << letter << "\n";
+
+    return 0;
+}
+```
+
+**Output**
+
+```
+word: charlie
+letter: n
 ```
