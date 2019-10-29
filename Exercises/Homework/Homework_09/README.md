@@ -69,6 +69,46 @@ int main()
 > Make a function that uses a *for loop* and a *std::vector<int>* and returns the largest number from the *vector*.
 
 ```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int get_largest_number(const std::vector<int>& numbers)
+{
+    // Alternative (better) way of doing this, but using for loop because the exercise told so.
+    // return *std::max_element(numbers.begin(), numbers.end());
+
+    int largest_number{};
+
+    for (const auto& number : numbers) {
+        if (number > largest_number) {
+            largest_number = number;
+        }
+    }
+
+    return largest_number;
+}
+
+int main()
+{
+    const std::vector<int> v1 = {1, 4, 2, 3};
+    const std::vector<int> v2 = {0, 1, 2, 3};
+    const std::vector<int> v3 = {5, 4, 3, 1};
+
+    std::cout << "Largest number in vector: \"{1, 4, 2, 3}\" is \"" << get_largest_number(v1) << "\"\n";
+    std::cout << "Largest number in vector: \"{0, 1, 2, 3}\" is \"" << get_largest_number(v2) << "\"\n";
+    std::cout << "Largest number in vector: \"{5, 4, 3, 1}\" is \"" << get_largest_number(v3) << "\"\n";
+
+    return 0;
+}
+```
+
+**Output**
+
+```
+Largest number in vector: "{1, 4, 2, 3}" is "4"
+Largest number in vector: "{0, 1, 2, 3}" is "3"
+Largest number in vector: "{5, 4, 3, 1}" is "5"
 ```
 
 ## Exercise 3
