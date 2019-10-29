@@ -115,10 +115,10 @@ Largest number in vector: "{5, 4, 3, 1}" is "5"
 
 > Make a function that makes a new random generator and *std::shuffles* any type of container (test with *string*, *vector* and *map*) using templates.
 >
-> **NOTE:** In place of *map* I decided to use *array* because *map* contains <key, value> -pairs so it would have been troublesome. )
+> **NOTE:** In place of *map* I decided to use *array* because *map* contains <key, value> -pairs so it would have been troublesome.)
 
 ```cpp
-include <iostream>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <array>
