@@ -13,7 +13,7 @@
 
 std::string binary_number_to_str(const uint8_t binary_number)
 {
-    std::string binary_as_str{"0b"}; // "0b" means zero binary
+    std::string binary_as_str = "0b"; // "0b" means zero binary
     const int bit_count = 8;
 
     for (int i = 0; i < bit_count; ++i) {
@@ -27,7 +27,7 @@ std::string binary_number_to_str(const uint8_t binary_number)
 int get_bit_value_count(const uint8_t binary_number, const char bit_value) {
     const std::string binary_as_str = binary_number_to_str(binary_number);
 
-    int bit_value_count{};
+    int bit_value_count = 0;
 
     for (const auto& value : binary_as_str) {
         if (value == bit_value) {
@@ -69,6 +69,69 @@ int main()
 to the *struct*; If it does, say "Creating person failed", otherwise print "Creating person successful". Remember to use *new* so that your pointer value doesn't get deleted due to the scope.
 
 ```cpp
+#include <iostream>
+#include <string>
+#include <memory>
+#include <limits>
+
+struct Person {
+    Person(const std::string full_name, const int birth_year) 
+        : full_name{full_name}, birth_year{birth_year}
+    {
+    }
+
+    const std::string full_name;
+    const int birth_year;
+};
+
+struct InputReader {
+    template <typename T>
+    static T read()
+    {
+        T value{};
+        std::cin >> value;
+
+        reset();
+
+        return value;
+    }
+private:
+    static void reset()
+    {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+};
+
+std::unique_ptr<Person> create_person(const std::string& full_name, const int birth_year)
+{
+    if (full_name.size() > 0 && (birth_year >= 1900 && birth_year <= 2019)) {
+        return std::make_unique<Person>(full_name, birth_year);
+    }
+
+    return nullptr;
+}
+
+int main()
+{
+    std::cout << "What is your full name?\n";
+    const std::string full_name = InputReader::read<std::string>();
+
+    std::cout << "What is your birth year?\n";
+    const int birth_year = InputReader::read<int>();
+
+    std::unique_ptr<Person> person = create_person(full_name, birth_year);
+
+    if (person) {
+        std::cout << "Creating person successful!\n";
+    }
+    else {
+        std::cerr << "Creating person failed!\n";
+        return -1;
+    }
+
+    return 0;
+}
 ```
 
 ## Exercise 3
