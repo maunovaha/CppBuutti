@@ -136,7 +136,259 @@ int main()
 
 ## Exercise 3
 
-> ...
+> Imagine we need to compress a deck of cards into as small space as possible. Before we have used a full *16 bit integer* for the type and another *16 bit integer* or even a *string* for the *suit* making it *32 bits* for a single card.
+> 
+> There are *52* possible cards so it should take only *6* bits to hold a single card. Let's settle for a *single byte* though for ease of use as *6 bits* handles difficulty with arrays or passing the cards into functions.
+>
+> Use a *bit field* with *unsigned ints* to hold the card values. *2 first bits for the suit*, *4 next bits for the value*. *Last 2 bits can be left unused*.
+
+```cpp
+#include <iostream>
+#include <array>
+#include <string>
+#include <vector>
+#include <cstddef>
+#include <algorithm>
+#include <utility>
+#include <unordered_map>
+
+enum class Suit { 
+    hearts   = 0b0000'0000,
+    diamonds = 0b0100'0000,
+    spades   = 0b1000'0000,
+    clubs    = 0b1100'0000
+};
+
+struct Card {
+    Card() : Card{Suit::hearts, min()}
+    {
+    }
+
+    Card(const Suit& suit, const int value) : packed_value_{to_packed_value(suit, value)}
+    {
+    }
+
+    friend std::ostream& operator <<(std::ostream& os, const Card& other)
+    {
+        const std::string suit = other.readable_suit();
+        const int value = other.value();
+
+        if (value > other.ace_ && value < other.jack_) {
+            os << value << " of " << suit;
+        }
+        else if (value == other.ace_) {
+            os << "Ace of " << suit;
+        }
+        else if (value == other.jack_) {
+            os << "Jack of " << suit;
+        }
+        else if (value == other.queen_) {
+            os << "Queen of " << suit;
+        }
+        else if (value == other.king_) {
+            os << "King of " << suit;
+        }
+
+        return os;
+    }
+
+    inline std::string readable_suit() const
+    {
+        return readable_suits_.at(suit());
+    }
+
+    constexpr static int min()
+    {
+        return ace_;
+    }
+
+    constexpr static int max()
+    {
+        return king_;
+    }
+
+    // This is fancy; basically what it does is to show that we can still access the real
+    // binary value of suit by unsetting all the bits except the first two.
+    constexpr Suit suit() const
+    {
+        return static_cast<Suit>(packed_value_ & 0b1100'0000);
+    }
+
+    // Here we do the same than above, but this time we remove the binary value of suit
+    // to access the real integer value of this card. (four middle bits, shifted to right by 2).
+    constexpr int value() const
+    {
+        return (packed_value_ & 0b0011'1100) >> 2;
+    }
+private:
+    constexpr uint8_t to_binary_suit(const Suit& suit) const
+    {
+        return static_cast<uint8_t>(suit);
+    }
+
+    constexpr uint8_t to_binary_value(const int value) const
+    {
+        return static_cast<uint8_t>(value) << 2;
+    }
+
+    constexpr uint8_t to_packed_value(const Suit& suit, const int value) const
+    {
+        if (value < min() || value > max()) {
+            return min();
+        }
+
+        return to_binary_suit(suit) | to_binary_value(value);
+    }
+
+    constexpr static int ace_   = 1;
+    constexpr static int jack_  = 11;
+    constexpr static int queen_ = 12;
+    constexpr static int king_  = 13;
+
+    inline static const std::unordered_map<Suit, std::string> readable_suits_ = {
+        {Suit::hearts,   "Hearts"}, 
+        {Suit::diamonds, "Diamonds"}, 
+        {Suit::spades,   "Spades"}, 
+        {Suit::clubs,    "Clubs"}
+    };
+
+    // Packing rules:
+    // 
+    // - Two first bits for the suit
+    // - four next bits for the value
+    // - Two last bits left unused
+    //
+    // E.g. The packed value of "King of Spades" is 0b1011'0100, because:
+    // 
+    // - The binary value of Suit::spades is 0b1000'0000.
+    // - The binary value of 13 (King) is 0b0000'1101.
+    // - However, because we use "four next bits for the value"; the binary value of king
+    //   is shifted from 0b0000'1101 to 0b0011'0100.
+    // - And finally we sum these together 0b1000'0000 + 0b0011'0100 = 0b1011'0100 ("King of Spades").
+    uint8_t packed_value_;
+};
+
+template <std::size_t N>
+struct Deck {
+    Deck(const std::vector<Card>& cards) : cards_{to_cards_array(cards)}
+    {
+    }
+
+    friend std::ostream& operator <<(std::ostream& os, const Deck& other)
+    {
+        for (const auto& card : other.cards_) {
+            os << card << std::endl;
+        }
+
+        return os;
+    }
+private:
+    std::array<Card, N> to_cards_array(const std::vector<Card>& cards) const
+    {
+        std::array<Card, N> cards_array;
+        std::move(cards.begin(), cards.end(), cards_array.begin());
+
+        return cards_array;
+    }
+
+    std::array<Card, N> cards_;
+};
+
+struct DeckCreator {
+    DeckCreator() = delete;
+
+    static Deck<52> poker()
+    {
+        std::vector<Card> cards;
+
+        for (const auto& suit : {Suit::hearts, Suit::diamonds, Suit::spades, Suit::clubs}) {
+            for (int value = Card::min(); value <= Card::max(); ++value) {
+                cards.emplace_back(suit, value);
+            }
+        }
+
+        return cards;
+    }
+};
+
+int main()
+{
+    const Deck<52> poker_deck = DeckCreator::poker();
+
+    std::cout << poker_deck << "\n"; // Debug
+
+    std::cout << "Size information:\n"
+              << "===============================\n"
+              << "Size of one card: " << sizeof(Card{Suit::spades, 1}) << " byte(s).\n"
+              << "Size of deck with 52 cards: " << sizeof(poker_deck) << " byte(s).\n"
+              << "===============================\n";
+
+    return 0;
+}
+```
+
+**Output**
+
+```
+Ace of Hearts
+2 of Hearts
+3 of Hearts
+4 of Hearts
+5 of Hearts
+6 of Hearts
+7 of Hearts
+8 of Hearts
+9 of Hearts
+10 of Hearts
+Jack of Hearts
+Queen of Hearts
+King of Hearts
+Ace of Diamonds
+2 of Diamonds
+3 of Diamonds
+4 of Diamonds
+5 of Diamonds
+6 of Diamonds
+7 of Diamonds
+8 of Diamonds
+9 of Diamonds
+10 of Diamonds
+Jack of Diamonds
+Queen of Diamonds
+King of Diamonds
+Ace of Spades
+2 of Spades
+3 of Spades
+4 of Spades
+5 of Spades
+6 of Spades
+7 of Spades
+8 of Spades
+9 of Spades
+10 of Spades
+Jack of Spades
+Queen of Spades
+King of Spades
+Ace of Clubs
+2 of Clubs
+3 of Clubs
+4 of Clubs
+5 of Clubs
+6 of Clubs
+7 of Clubs
+8 of Clubs
+9 of Clubs
+10 of Clubs
+Jack of Clubs
+Queen of Clubs
+King of Clubs
+
+Size information:
+===============================
+Size of one card: 1 byte(s).
+Size of deck with 52 cards: 52 byte(s).
+===============================
+```
 
 ## Exercise 4
 
