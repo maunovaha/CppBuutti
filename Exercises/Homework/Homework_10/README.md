@@ -258,17 +258,17 @@ private:
 
     // Packing rules:
     // 
-    // - Two first bits for the suit
-    // - four next bits for the value
-    // - Two last bits left unused
+    // - Two first bits for the suit.
+    // - four next bits for the value.
+    // - Two last bits left unused.
     //
     // E.g. The packed value of "King of Spades" is 0b1011'0100, because:
     // 
     // - The binary value of Suit::spades is 0b1000'0000.
     // - The binary value of 13 (King) is 0b0000'1101.
     // - However, because we use "four next bits for the value"; the binary value of king
-    //   is shifted from 0b0000'1101 to 0b0011'0100.
-    // - And finally we sum these together 0b1000'0000 + 0b0011'0100 = 0b1011'0100 ("King of Spades").
+    //   is shifted left by 2, so from 0b0000'1101 to 0b0011'0100.
+    // - And finally we add these together 0b1000'0000 + 0b0011'0100 = 0b1011'0100 ("King of Spades").
     uint8_t packed_value_;
 };
 
