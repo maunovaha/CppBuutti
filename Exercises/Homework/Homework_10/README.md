@@ -73,15 +73,16 @@ to the *struct*; If it does, say "Creating person failed", otherwise print "Crea
 #include <string>
 #include <memory>
 #include <limits>
+#include <utility>
 
 struct Person {
     Person(const std::string full_name, const int birth_year) 
-        : full_name{full_name}, birth_year{birth_year}
+        : full_name{std::move(full_name)}, birth_year{birth_year}
     {
     }
 
-    const std::string full_name;
-    const int birth_year;
+    std::string full_name;
+    int birth_year;
 };
 
 struct InputReader {
@@ -120,7 +121,7 @@ int main()
     std::cout << "What is your birth year?\n";
     const int birth_year = InputReader::read<int>();
 
-    std::unique_ptr<Person> person = create_person(full_name, birth_year);
+    const std::unique_ptr<Person> person = create_person(full_name, birth_year);
 
     if (person) {
         std::cout << "Creating person successful!\n";
@@ -152,7 +153,7 @@ int main()
 #include <utility>
 #include <unordered_map>
 
-enum class Suit { 
+enum class Suit {
     hearts   = 0b0000'0000,
     diamonds = 0b0100'0000,
     spades   = 0b1000'0000,
@@ -160,6 +161,9 @@ enum class Suit {
 };
 
 struct Card {
+    // I dont like to have default construtor, but removing it stops the code from compiling;
+    // The reason is that having a line such as `std::array<Card, N> cards_array;` will call this
+    // constructor in order to fill the allocated array with default cards (design problem).
     Card() : Card{Suit::hearts, min()}
     {
     }
