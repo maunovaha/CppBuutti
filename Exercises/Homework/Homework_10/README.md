@@ -405,6 +405,8 @@ Size of deck with 52 cards: 52 byte(s).
 ```cpp
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <cmath>
 
 struct BinaryFormatter {
     BinaryFormatter() = delete;
@@ -436,7 +438,17 @@ struct Color16 {
         return os;
     }
 private:
+    uint8_t to_gapped_color(const uint8_t color, const int bits) const
+    {
+        return std::min(static_cast<int>(color), static_cast<int>(std::pow(2, bits) - 1));
+    }
+
     /* constexpr */ uint16_t to_16bit_color(const Color24& color24) const;
+
+    constexpr static int total_bits_ = 16;
+    constexpr static int red_bits_   = 5;
+    constexpr static int green_bits_ = 6;
+    constexpr static int blue_bits_  = 5;
 
     // Packing rules:
     // 
@@ -482,12 +494,12 @@ private:
 // The method uses calls e.g. `color24.red()` and needs to be declared here to avoid compile time errors.
 uint16_t Color16::to_16bit_color(const Color24& color24) const
 {
-    // Sets maximum values for red, green and blue (e.g. 5 bits = 31 is the max value).
-    const uint8_t red   = color24.red()   & 0b0001'1111;
-    const uint8_t green = color24.green() & 0b0011'1111;
-    const uint8_t blue  = color24.blue()  & 0b0001'1111;
+    // Sets maximum values for red, green and blue (e.g. 5 bits = 31 is the max integer value).
+    const uint8_t red   = to_gapped_color(color24.red(), red_bits_);
+    const uint8_t green = to_gapped_color(color24.green(), green_bits_);
+    const uint8_t blue  = to_gapped_color(color24.blue(), blue_bits_);
 
-    return (red << 11) | (green << 5) | blue;
+    return (red << (total_bits_ - red_bits_)) | (green << red_bits_) | blue;
 }
 
 int main()
