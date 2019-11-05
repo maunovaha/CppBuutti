@@ -396,4 +396,134 @@ Size of deck with 52 cards: 52 byte(s).
 
 ## Exercise 4
 
-> ...
+> Our fancy *Nokia 3660* device has *16-bit* colors, *65536* possible colors in fact.
+> 
+> *The first 5 bits are for red color*, *next 6 for green* (human eye is more sensitive to the green color so that is why we spend the extra bit there) and the last *5 bits are for blue*.
+>
+> Make a program that converts our modern *24-bit color* into a *16-bit color*. *24-bit color* has *8 bits* for each color: *red*, *green* and *blue*. Remember of course that you need to adjust the maximum brightness as maximum value of *5 bits* is less than with *8 bits*.
+
+```cpp
+#include <iostream>
+#include <string>
+
+struct BinaryFormatter {
+    BinaryFormatter() = delete;
+
+    static std::string to_str(const uint16_t value)
+    {
+        std::string str = "0b"; // "0b" means zero binary
+        const int bit_count = 16;
+
+        for (int i = 0; i < bit_count; ++i) {
+            const int bs = (bit_count - 1) - i;
+            str += std::to_string(static_cast<int>((value & (1 << bs)) >> bs));
+        }
+
+        return str;
+    }
+};
+
+struct Color24; // Forward declaration to avoid compile time errors.
+
+struct Color16 {
+    Color16(const Color24& color24) : rgb_{to_16bit_color(color24)}
+    {
+    }
+
+    friend std::ostream& operator <<(std::ostream& os, const Color16& other)
+    {
+        os << BinaryFormatter::to_str(other.rgb_);
+        return os;
+    }
+private:
+    /* constexpr */ uint16_t to_16bit_color(const Color24& color24) const;
+
+    // Packing rules:
+    // 
+    // - 5 first bits are for the (R)ed color.
+    // - Next 6 bits are for the (G)reen color.
+    // - And last 5 bits are for the (B)lue color. 
+    //
+    // In other words, uint16_t rgb_ = 0bRRRR'RGGG'GGGB'BBBB. (16 bits).
+    uint16_t rgb_;
+};
+
+struct Color24 {
+    Color24(const uint8_t red, const uint8_t green, const uint8_t blue)
+        : red_{red}, green_{green}, blue_{blue}
+    {
+    }
+
+    explicit inline operator Color16() const
+    {
+        return *this; // Calls `Color16(const Color24& color24)` constructor.
+    }
+
+    constexpr uint8_t red() const
+    {
+        return red_;
+    }
+
+    constexpr uint8_t green() const
+    {
+        return green_;
+    }
+
+    constexpr uint8_t blue() const
+    {
+        return blue_;
+    }
+private:
+    uint8_t red_;
+    uint8_t green_;
+    uint8_t blue_;
+};
+
+// The method uses calls e.g. `color24.red()` and needs to be declared here to avoid compile time errors.
+uint16_t Color16::to_16bit_color(const Color24& color24) const
+{
+    // Sets maximum values for red, green and blue (e.g. 5 bits = 31 is the max value).
+    const uint8_t red   = color24.red()   & 0b0001'1111;
+    const uint8_t green = color24.green() & 0b0011'1111;
+    const uint8_t blue  = color24.blue()  & 0b0001'1111;
+
+    return (red << 11) | (green << 5) | blue;
+}
+
+int main()
+{
+    const Color24 r24{0xFF, 0x00, 0x00}; // 0xFF = 255
+    const Color24 g24{0x00, 0xFF, 0x00};
+    const Color24 b24{0x00, 0x00, 0xFF};
+
+    const Color16 r16 = static_cast<Color16>(r24);
+    const Color16 g16{g24};
+    const Color16 b16 = b24;
+
+    std::cout << "r24 (0xFF, 0x00, 0x00) as r16 value is: " << r16 << "\n"
+              << "g24 (0x00, 0xFF, 0x00) as g16 value is: " << g16 << "\n"
+              << "b24 (0x00, 0x00, 0xFF) as b16 value is: " << b16 << "\n\n";
+
+    std::cout << "Size information:\n"
+              << "===============================\n"
+              << "Size of Color16: " << sizeof(Color16{{0x00, 0x00, 0x00}}) << " byte(s).\n"
+              << "Size of Color24: " << sizeof(Color24{0x00, 0x00, 0x00}) << " byte(s).\n"
+              << "===============================\n";
+
+    return 0;
+}
+```
+
+**Output**
+
+```
+r24 (0xFF, 0x00, 0x00) as r16 value is: 0b1111100000000000
+g24 (0x00, 0xFF, 0x00) as g16 value is: 0b0000011111100000
+b24 (0x00, 0x00, 0xFF) as b16 value is: 0b0000000000011111
+
+Size information:
+===============================
+Size of Color16: 2 byte(s).
+Size of Color24: 3 byte(s).
+===============================
+```
