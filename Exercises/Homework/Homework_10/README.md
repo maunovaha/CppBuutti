@@ -532,9 +532,11 @@ int main()
 **Output**
 
 ```
-r24 (0xFF, 0x00, 0x00) as r16 value is: 0b1111100000000000
-g24 (0x00, 0xFF, 0x00) as g16 value is: 0b0000011111100000
-b24 (0x00, 0x00, 0xFF) as b16 value is: 0b0000000000011111
+red24 (0xFF, 0x00, 0x00) as red16 value is: 0b1111100000000000
+green24 (0x00, 0xFF, 0x00) as green16 value is: 0b0000011111100000
+blue24 (0x00, 0x00, 0xFF) as blue16 value is: 0b0000000000011111
+teal24 (0, 128, 128) as teal16 value is: 0b0000010000010000
+forest_green24 (78, 146, 88) as forest_green16 value is: 0b0100110010001011
 
 Size information:
 ===============================
