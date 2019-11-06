@@ -438,11 +438,6 @@ struct Color16 {
         return os;
     }
 private:
-    uint8_t to_gapped_color(const uint8_t color, const int bits) const
-    {
-        return std::min(static_cast<int>(color), static_cast<int>(std::pow(2, bits) - 1));
-    }
-
     /* constexpr */ uint16_t to_16bit_color(const Color24& color24) const;
 
     constexpr static int total_bits_ = 16;
@@ -494,27 +489,35 @@ private:
 // The method uses calls e.g. `color24.red()` and needs to be declared here to avoid compile time errors.
 uint16_t Color16::to_16bit_color(const Color24& color24) const
 {
-    // Sets maximum values for red, green and blue (e.g. 5 bits = 31 is the max integer value).
-    const uint8_t red   = to_gapped_color(color24.red(), red_bits_);
-    const uint8_t green = to_gapped_color(color24.green(), green_bits_);
-    const uint8_t blue  = to_gapped_color(color24.blue(), blue_bits_);
+    // When converting from 24 bits to 16 bits, we need to accept the "loss of color information".
+    // Hence, this is done by shifting bits to the right for a smaller values.
+    const uint8_t red   = color24.red()   >> (total_bits_ / 2 - red_bits_);
+    const uint8_t green = color24.green() >> (total_bits_ / 2 - green_bits_);
+    const uint8_t blue  = color24.blue()  >> (total_bits_ / 2 - blue_bits_);
 
+    // The actual conversion to 0bRRRR'RGGG'GGGB'BBBB format. 
     return (red << (total_bits_ - red_bits_)) | (green << red_bits_) | blue;
 }
 
 int main()
 {
-    const Color24 r24{0xFF, 0x00, 0x00}; // 0xFF = 255
-    const Color24 g24{0x00, 0xFF, 0x00};
-    const Color24 b24{0x00, 0x00, 0xFF};
+    const Color24 red24{0xFF, 0x00, 0x00}; // 0xFF = 255
+    const Color24 green24{0x00, 0xFF, 0x00};
+    const Color24 blue24{0x00, 0x00, 0xFF};
+    const Color24 teal24{0, 128, 128};
+    const Color24 forest_green24{78, 146, 88};
 
-    const Color16 r16 = static_cast<Color16>(r24);
-    const Color16 g16{g24};
-    const Color16 b16 = b24;
+    const Color16 red16 = static_cast<Color16>(red24);
+    const Color16 green16{green24};
+    const Color16 blue16 = blue24;
+    const Color16 teal16 = static_cast<Color16>(teal24);
+    const Color16 forest_green16 = static_cast<Color16>(forest_green24);
 
-    std::cout << "r24 (0xFF, 0x00, 0x00) as r16 value is: " << r16 << "\n"
-              << "g24 (0x00, 0xFF, 0x00) as g16 value is: " << g16 << "\n"
-              << "b24 (0x00, 0x00, 0xFF) as b16 value is: " << b16 << "\n\n";
+    std::cout << "red24 (0xFF, 0x00, 0x00) as red16 value is: "     << red16   << "\n"
+              << "green24 (0x00, 0xFF, 0x00) as green16 value is: " << green16 << "\n"
+              << "blue24 (0x00, 0x00, 0xFF) as blue16 value is: "   << blue16  << "\n"
+              << "teal24 (0, 128, 128) as teal16 value is: "        << teal16  << "\n"
+              << "forest_green24 (78, 146, 88) as forest_green16 value is: "   << forest_green16 << "\n\n";
 
     std::cout << "Size information:\n"
               << "===============================\n"
